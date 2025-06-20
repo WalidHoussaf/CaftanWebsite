@@ -1,0 +1,33 @@
+/* Tailwind CSS */
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable */
+
+@layer base {
+  body {
+    @apply bg-white text-sapphire;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-scheherazade;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded font-medium transition-colors duration-200;
+  }
+  .btn-primary {
+    @apply bg-emerald text-white hover:bg-emerald/90;
+  }
+  .btn-secondary {
+    @apply bg-sand text-sapphire hover:bg-sand/80;
+  }
+  .btn-accent {
+    @apply bg-gold text-sapphire hover:bg-gold/90;
+  }
+  .container-custom {
+    @apply px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
+  }
+} 

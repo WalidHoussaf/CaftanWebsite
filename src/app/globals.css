@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-cream: #F1EFEC;
+  --color-taupe: #D4C9BE;
+  --color-navy: #123458;
+  --color-noir: #030303;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-noir;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-6;
+  }
+  
+  .btn {
+    @apply inline-block font-medium transition-all duration-300;
+  }
+  
+  .justify-text {
+    @apply text-justify;
+  }
+  
+  .gradient-heading {
+    @apply bg-gradient-to-r from-navy to-noir text-transparent bg-clip-text;
+  }
+}
+
+/* CSS pour les pages de catégories */
+.category-banner {
+  @apply relative h-72 md:h-96 w-full overflow-hidden;
+}
+
+.category-banner-content {
+  @apply absolute inset-0 flex flex-col justify-center z-10 text-cream px-4 md:px-8;
+}
+
+.category-banner-content h1 {
+  @apply text-3xl md:text-5xl lg:text-6xl font-bold mb-4;
+}
+
+.category-banner-overlay {
+  @apply absolute inset-0 bg-gradient-to-r from-navy/70 to-navy/40 z-0;
+}
+
+/* Styles pour la grille de produits */
+.products-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+/* Prevent vertical scrolling */
+html, body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Add a container for scrollable content */
+main {
+  height: calc(100vh - 6rem); /* Subtract header height */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+main::-webkit-scrollbar {
+  display: none;
+}
+
+main {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+} 
