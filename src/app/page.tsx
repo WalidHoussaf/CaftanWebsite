@@ -1,11 +1,25 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import FeaturedProducts from '@/components/FeaturedProducts';
+import ZelligePattern from '@/components/ZelligePattern';
+import { Cinzel_Decorative } from 'next/font/google';
+
+const cinzel = Cinzel_Decorative({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+});
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   // Mouse tracking effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -21,9 +35,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-cream">
+    <div className="flex flex-col bg-cream">
       {/* Hero Section - Split Screen Design */}
-      <section className="relative min-h-screen">
+      <section className="relative min-h-screen hero-clip-path">
         {/* Subtle gradient background */}
         <div className="absolute inset-0 bg-gradient-to-r from-navy/5 to-taupe/5 z-0 pointer-events-none"></div>
         
@@ -57,167 +71,163 @@ export default function Home() {
           <div className="absolute left-0 h-[60%] w-px bg-gradient-to-b from-transparent via-taupe/30 to-transparent hidden md:block"></div>
           
           {/* Moroccan Chandelier */}
-          <div className="absolute top-0 right-[20%] w-40 h-80 pointer-events-none hidden md:block">
-            {/* Chandelier chain */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[#E6C200]/20 to-[#E6C200]/20"></div>
-            
-            {/* Chandelier top */}
-            <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border border-[#E6C200]/30 flex items-center justify-center">
-              <div className="w-4 h-4 rounded-full bg-[#E6C200]/20"></div>
-            </div>
-            
-            {/* Chandelier main body */}
-            <div className="absolute top-28 left-1/2 transform -translate-x-1/2">
-              {/* Outer geometric shape */}
-              <div className="relative w-32 h-32">
-                {/* Octagonal frame */}
-                <svg viewBox="0 0 100 100" className="w-full h-full">
-                  <polygon 
-                    points="30,0 70,0 100,30 100,70 70,100 30,100 0,70 0,30" 
-                    fill="none" 
-                    stroke="rgba(230,194,0,0.3)" 
-                    strokeWidth="1"
-                  />
-                  <polygon 
-                    points="35,10 65,10 90,35 90,65 65,90 35,90 10,65 10,35" 
-                    fill="none" 
-                    stroke="rgba(230,194,0,0.2)" 
-                    strokeWidth="0.5"
-                  />
-                  
-                  {/* Central circle */}
-                  <circle cx="50" cy="50" r="10" fill="none" stroke="rgba(230,194,0,0.3)" strokeWidth="0.5" />
-                  
-                  {/* Decorative lines */}
-                  {[...Array(8)].map((_, i) => (
-                    <line 
-                      key={`line-${i}`}
-                      x1="50" 
-                      y1="50" 
-                      x2={50 + 40 * Math.cos(i * Math.PI / 4)} 
-                      y2={50 + 40 * Math.sin(i * Math.PI / 4)} 
-                      stroke="rgba(230,194,0,0.15)" 
-                      strokeWidth="0.5"
-                    />
-                  ))}
-                </svg>
-              </div>
-              
-              {/* Lower hanging elements */}
-              <div className="absolute top-32 left-1/2 transform -translate-x-1/2 flex justify-center w-full">
-                {[...Array(5)].map((_, i) => (
-                  <div 
-                    key={`hang-${i}`}
-                    className="mx-2 w-px bg-gradient-to-b from-[#E6C200]/30 to-transparent relative"
-                    style={{ 
-                      height: i === 0 || i === 4 
-                        ? `${Math.max(5, 6 - Math.abs(i - 2) * 3)}rem`
-                        : `${Math.max(5, 10 - Math.abs(i - 2) * 3)}rem`,
-                      marginTop: i === 0 || i === 4 ? '-0.5rem' : '0'
-                    }}
-                  >
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#E6C200]/30"></div>
+          <div className="absolute top-0 right-[15%] w-40 h-80 pointer-events-none hidden md:block">
+            {isClient ? (
+              <>
+                {/* Chandelier chain */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[#E6C200]/20 to-[#E6C200]/20"></div>
+                
+                {/* Chandelier top */}
+                <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border border-[#E6C200]/30 flex items-center justify-center">
+                  <div className="w-4 h-4 rounded-full bg-[#E6C200]/20"></div>
+                </div>
+                
+                {/* Chandelier main body */}
+                <div className="absolute top-28 left-1/2 transform -translate-x-1/2">
+                  {/* Outer geometric shape */}
+                  <div className="relative w-32 h-32">
+                    {/* Octagonal frame */}
+                    <svg viewBox="0 0 100 100" className="w-full h-full">
+                      <polygon 
+                        points="30,0 70,0 100,30 100,70 70,100 30,100 0,70 0,30" 
+                        fill="none" 
+                        stroke="rgba(230,194,0,0.3)" 
+                        strokeWidth="1"
+                      />
+                      <polygon 
+                        points="35,10 65,10 90,35 90,65 65,90 35,90 10,65 10,35" 
+                        fill="none" 
+                        stroke="rgba(230,194,0,0.2)" 
+                        strokeWidth="0.5"
+                      />
+                      
+                      {/* Central circle */}
+                      <circle cx="50" cy="50" r="10" fill="none" stroke="rgba(230,194,0,0.3)" strokeWidth="0.5" />
+                      
+                      {/* Decorative lines */}
+                      {[...Array(8)].map((_, i) => (
+                        <line 
+                          key={`line-${i}`}
+                          x1="50" 
+                          y1="50" 
+                          x2={50 + 40 * Math.cos(i * Math.PI / 4)} 
+                          y2={50 + 40 * Math.sin(i * Math.PI / 4)} 
+                          stroke="rgba(230,194,0,0.15)" 
+                          strokeWidth="0.5"
+                        />
+                      ))}
+                    </svg>
                   </div>
-                ))}
+                  
+                  {/* Lower hanging elements */}
+                  <div className="absolute top-32 left-1/2 transform -translate-x-1/2 flex justify-center w-full">
+                    {[...Array(5)].map((_, i) => (
+                      <div 
+                        key={`hang-${i}`}
+                        className="mx-2 w-px bg-gradient-to-b from-[#E6C200]/30 to-transparent relative"
+                        style={{ 
+                          height: i === 0 || i === 4 
+                            ? `${Math.max(5, 6 - Math.abs(i - 2) * 3)}rem`
+                            : `${Math.max(5, 10 - Math.abs(i - 2) * 3)}rem`,
+                          marginTop: i === 0 || i === 4 ? '-0.5rem' : '0'
+                        }}
+                      >
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#E6C200]/30"></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Light glow effect */}
+                <div className="absolute top-28 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-radial-pulse opacity-5 rounded-full"></div>
+                
+                {/* Golden light effect for chandelier */}
+                <style jsx>{`
+                  @keyframes golden-pulse {
+                    0% { opacity: 0.4; }
+                    50% { opacity: 0.7; }
+                    100% { opacity: 0.4; }
+                  }
+                  
+                  @keyframes golden-flicker {
+                    0% { opacity: 0.5; }
+                    25% { opacity: 0.3; }
+                    50% { opacity: 0.6; }
+                    75% { opacity: 0.4; }
+                    100% { opacity: 0.5; }
+                  }
+                  
+                  .animate-golden-pulse {
+                    animation: golden-pulse 4s ease-in-out infinite;
+                  }
+                  
+                  .animate-golden-flicker {
+                    animation: golden-flicker 2s ease-in-out infinite;
+                  }
+                `}</style>
+                
+                {/* Main light glow */}
+                <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-60 h-60 rounded-full animate-golden-pulse"
+                     style={{
+                       background: 'radial-gradient(circle, rgba(230,194,0,0.15) 0%, rgba(230,194,0,0) 70%)',
+                       boxShadow: '0 0 30px 10px rgba(230,194,0,0.1)'
+                     }}>
+                </div>
+                
+                {/* Secondary light effects */}
+                <div className="absolute top-28 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-full animate-golden-flicker"
+                     style={{
+                       background: 'radial-gradient(circle, rgba(230,194,0,0.2) 0%, rgba(230,194,0,0) 60%)',
+                     }}>
+                </div>
+                
+                {/* Bright center */}
+                <div className="absolute top-35 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full"
+                     style={{
+                       background: 'radial-gradient(circle, rgba(230,194,0,0.3) 0%, rgba(230,194,0,0) 100%)',
+                     }}>
+                </div>
+              </>
+            ) : (
+              // Placeholder during SSR to prevent hydration mismatch
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border border-[#E6C200]/30 flex items-center justify-center">
+                <div className="w-4 h-4 rounded-full bg-[#E6C200]/20"></div>
               </div>
-            </div>
-            
-            {/* Light rays */}
-            <div className="absolute top-28 left-1/2 transform -translate-x-1/2">
-              {[...Array(12)].map((_, i) => (
-                <div 
-                  key={`ray-${i}`}
-                  className="absolute top-0 left-0 w-1 opacity-10"
-                  style={{
-                    height: `${Math.random() * 100 + 100}px`,
-                    background: 'linear-gradient(to bottom, rgba(230,194,0,0.3) 0%, rgba(230,194,0,0) 100%)',
-                    transform: `rotate(${i * 30}deg)`,
-                    transformOrigin: 'top',
-                  }}
-                ></div>
-              ))}
-            </div>
-            
-            {/* Light glow effect */}
-            <div className="absolute top-28 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-radial-pulse opacity-5 rounded-full"></div>
-            
-            {/* Golden light effect for chandelier */}
-            <style jsx>{`
-              @keyframes golden-pulse {
-                0% { opacity: 0.4; }
-                50% { opacity: 0.7; }
-                100% { opacity: 0.4; }
-              }
-              
-              @keyframes golden-flicker {
-                0% { opacity: 0.5; }
-                25% { opacity: 0.3; }
-                50% { opacity: 0.6; }
-                75% { opacity: 0.4; }
-                100% { opacity: 0.5; }
-              }
-              
-              .animate-golden-pulse {
-                animation: golden-pulse 4s ease-in-out infinite;
-              }
-              
-              .animate-golden-flicker {
-                animation: golden-flicker 2s ease-in-out infinite;
-              }
-            `}</style>
-            
-            {/* Main light glow */}
-            <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-60 h-60 rounded-full animate-golden-pulse"
-                 style={{
-                   background: 'radial-gradient(circle, rgba(230,194,0,0.15) 0%, rgba(230,194,0,0) 70%)',
-                   boxShadow: '0 0 30px 10px rgba(230,194,0,0.1)'
-                 }}>
-            </div>
-            
-            {/* Secondary light effects */}
-            <div className="absolute top-28 left-1/2 transform -translate-x-1/2 w-40 h-40 rounded-full animate-golden-flicker"
-                 style={{
-                   background: 'radial-gradient(circle, rgba(230,194,0,0.2) 0%, rgba(230,194,0,0) 60%)',
-                 }}>
-            </div>
-            
-            {/* Bright center */}
-            <div className="absolute top-35 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full"
-                 style={{
-                   background: 'radial-gradient(circle, rgba(230,194,0,0.3) 0%, rgba(230,194,0,0) 100%)',
-                 }}>
-            </div>
+            )}
           </div>
           
           <div className="px-6 md:px-16 lg:px-24 py-16 w-full max-w-lg relative z-20">
             
             {/* Main Title */}
-            <div className="relative mb-4 -ml-12">
+            <div className="relative mb-4 -ml-16">
               <h1 className="font-serif relative">
-                <span className="text-6xl md:text-7xl lg:text-8xl block font-light -ml-24 animate-fade-in hover:text-navy transition-colors duration-500 cursor-default">Moroccan</span>
-                <span className="text-6xl md:text-7xl lg:text-8xl block font-light mt-[-5px] -ml-10 text-taupe animate-fade-in-up hover:text-[#8e9aaf] transition-colors duration-500 cursor-default">Elegance</span>
+                <span className="text-5xl md:text-6xl lg:text-7xl block font-light -ml-24 animate-fade-in hover:text-navy transition-colors duration-500 cursor-default" style={{ color: '#0B1D51' }}>Moroccan</span>
+                <span className="text-5xl md:text-6xl lg:text-7xl block font-light mt-[-5px] -ml-10 text-taupe animate-fade-in-up hover:text-[#8e9aaf] transition-colors duration-500 cursor-default">Elegance</span>
               </h1>
             </div>
 
             {/* Season Title */}
-            <div className="flex items-center -ml-12 opacity-80 mt-8 mb-6">
-              <span className="uppercase tracking-widest text-xs -ml-24 animate-fade-in-up relative inline-block">
+            <div className="flex items-center -ml-12 opacity-80 mt-8 mb-6 group">
+              <span className="uppercase tracking-widest text-xs -ml-24 animate-fade-in-up relative inline-block text-golden-glow">
                 Spring / Summer Collection 2025
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-navy group-hover:w-full transition-all duration-500 hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-transparent via-golden-glow to-transparent group-hover:w-full transition-all duration-500"></span>
               </span>
             </div>
             
-            {/* Short description */}
+            {/* Enhanced description with glass effect */}
             <div className="mb-8 -ml-12 animate-fade-in-up animation-delay-300">
-              <div className="relative -ml-24 max-w-sm overflow-hidden">
-                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-[#E6C200]/30 to-transparent"></div>
-                <p className="text-navy/80 pl-4 py-3 text-base md:text-lg font-light leading-relaxed tracking-wide">
-                  Discover our collection of <span className="font-medium text-navy relative inline-block">
+              <div className="relative -ml-24 max-w-sm overflow-hidden glass-effect rounded-lg p-3">
+                <div className="absolute left-0 top-0 h-full w-1 bg-[#E6C200] animate-shimmer"></div>
+                <p className="text-navy/90 pl-4 py-3 text-base md:text-lg font-light leading-relaxed tracking-wide">
+                  Discover our collection of <span className="font-medium text-navy relative inline-block group">
                     handcrafted
-                    <span className="absolute -bottom-0.5 left-0 w-full h-px bg-[#E6C200]/50"></span>
-                  </span> traditional <span className="font-medium text-navy">Moroccan</span> garments
+                    <span className="absolute -bottom-0.5 left-0 w-full h-[1.5px] bg-[#E6C200]/70 group-hover:bg-[#E6C200] transition-all duration-300"></span>
+                  </span> traditional <span className="font-medium text-navy relative group">
+                    Moroccan
+                    <span className="absolute -bottom-0.5 left-0 w-full h-[1.5px] bg-navy/50 group-hover:bg-navy transition-all duration-300"></span>
+                  </span> garments
                 </p>
-                <div className="absolute bottom-0 left-4 right-0 h-px bg-gradient-to-r from-taupe/30 to-transparent"></div>
+                <div className="absolute bottom-0 left-4 right-0 h-[1px] bg-gradient-to-r from-taupe/40 via-[#E6C200]/20 to-transparent"></div>
               </div>
             </div>
             
@@ -237,75 +247,19 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-noir/20 to-transparent md:hidden"></div>
         
         {/* Moroccan Zellige Pattern in bottom right - showing more of the shape */}
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] opacity-50 pointer-events-none z-10 overflow-hidden">
-          <div className="relative w-[600px] h-[600px] translate-x-[100px] translate-y-[100px]">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-              {/* Background circle */}
-              <circle cx="100" cy="100" r="95" fill="#F8F5ED" />
-              
-              {/* Additional inner circle */}
-              <circle cx="100" cy="100" r="85" fill="#FAF7F0" stroke="#E6C200" strokeWidth="0.3" />
-              
-              {/* Central star pattern */}
-              <g transform="translate(100,100)">
-                {/* Blue petals */}
-                {[...Array(12)].map((_, i) => (
-                  <path 
-                    key={`petal-${i}`}
-                    d={`M 0 0 L ${35 * Math.cos(i * Math.PI / 6)} ${35 * Math.sin(i * Math.PI / 6)} L ${40 * Math.cos((i + 0.5) * Math.PI / 6)} ${40 * Math.sin((i + 0.5) * Math.PI / 6)} L ${35 * Math.cos((i + 1) * Math.PI / 6)} ${35 * Math.sin((i + 1) * Math.PI / 6)} Z`}
-                    fill="#183661"
-                    stroke="#FFFFFF"
-                    strokeWidth="0.5"
-                  />
-                ))}
-                
-                {/* Golden accents on petals */}
-                {[...Array(6)].map((_, i) => (
-                  <path 
-                    key={`golden-accent-${i}`}
-                    d={`M 0 0 L ${30 * Math.cos(i * Math.PI / 3)} ${30 * Math.sin(i * Math.PI / 3)} L ${32 * Math.cos((i + 0.1) * Math.PI / 3)} ${32 * Math.sin((i + 0.1) * Math.PI / 3)} L ${30 * Math.cos((i + 0.2) * Math.PI / 3)} ${30 * Math.sin((i + 0.2) * Math.PI / 3)} Z`}
-                    fill="#E6C200"
-                    stroke="#FFFFFF"
-                    strokeWidth="0.3"
-                  />
-                ))}
-                
-                {/* Central black circle */}
-                <circle cx="0" cy="0" r="15" fill="#222222" />
-                <circle cx="0" cy="0" r="10" fill="#E6C200" strokeWidth="0.5" stroke="#FFFFFF" />
-                <circle cx="0" cy="0" r="5" fill="#183661" />
-                
-                {/* Outer pattern elements */}
-                {[...Array(8)].map((_, i) => (
-                  <g key={`outer-${i}`} transform={`rotate(${i * 45})`}>
-                    <path d={`M 45 0 L 55 -5 L 65 0 L 55 5 Z`} fill="#E6C200" stroke="#FFFFFF" strokeWidth="0.3" />
-                    <path d={`M 70 0 L 75 -8 L 85 0 L 75 8 Z`} fill="#183661" stroke="#FFFFFF" strokeWidth="0.3" />
-                  </g>
-                ))}
-              </g>
-              
-              {/* Border pattern */}
-              <g>
-                {[...Array(24)].map((_, i) => (
-                  <path 
-                    key={`border-${i}`}
-                    d={`M ${100 + 95 * Math.cos(i * Math.PI / 12)} ${100 + 95 * Math.sin(i * Math.PI / 12)} L ${100 + 95 * Math.cos((i + 0.7) * Math.PI / 12)} ${100 + 95 * Math.sin((i + 0.7) * Math.PI / 12)} L ${100 + 85 * Math.cos((i + 0.5) * Math.PI / 12)} ${100 + 85 * Math.sin((i + 0.5) * Math.PI / 12)} Z`}
-                    fill={i % 4 === 0 ? "#E6C200" : (i % 4 === 1 ? "#183661" : (i % 4 === 2 ? "#22A45D" : "#B2A59B"))}
-                    stroke="#FFFFFF"
-                    strokeWidth="0.5"
-                  />
-                ))}
-              </g>
-              
-              {/* Golden accent ring */}
-              <circle cx="100" cy="100" r="60" fill="none" stroke="#E6C200" strokeWidth="0.8" strokeDasharray="1,5" />
-            </svg>
-          </div>
-        </div>
+        <ZelligePattern />
       </section>
 
+      <svg height="0" width="0" className="absolute">
+        <defs>
+          <clipPath id="hero-wave-clip-path" clipPathUnits="objectBoundingBox">
+            <path d="M0,0 H1 V0.9 C0.8,1,0.7,0.9,0.5,0.9 C0.3,0.9,0.2,1,0,0.9 V0 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
       {/* Collections Section */}
-      <section className="py-32 bg-cream relative overflow-hidden">
+      <section className="pt-8 pb-32 bg-cream relative overflow-hidden">
         
         {/* Animated floating elements */}
         <div className="absolute top-[15%] right-[15%] w-3 h-3 bg-[#E6C200]/20 rounded-full animate-float"></div>
@@ -1036,7 +990,7 @@ export default function Home() {
       </section>
       
       {/* Newsletter Section */}
-      <section className="py-32 bg-cream relative overflow-hidden">
+      <section className="pb-32 bg-cream relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.02] pointer-events-none"></div>
         

@@ -9,13 +9,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'montserrat': ['Montserrat', 'sans-serif'],
-        'raleway': ['Raleway', 'sans-serif'],
-        'amiri': ['var(--font-amiri)'],
-        'scheherazade': ['Scheherazade New', 'serif'],
-        'sans': ['Montserrat', 'sans-serif'],
-        'serif': ['Playfair Display', 'serif'],
-        pattaya: ['var(--font-pattaya)'],
+        sans: ['var(--font-cinzel)', 'sans-serif'],
+        serif: ['var(--font-cinzel)', 'serif'],
       },
       colors: {
         'cream': '#FAF7F0',
@@ -29,6 +24,7 @@ module.exports = {
         'ruby': '#123458',
         'copper': '#D4C9BE',
         'terracotta': '#D4C9BE',
+        'golden-glow': '#D4AF37',
       },
       animation: {
         'fade-in': 'fadeIn 1.2s ease-in-out forwards',

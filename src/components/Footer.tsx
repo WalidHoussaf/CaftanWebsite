@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-navy/95 text-cream relative overflow-hidden">
+    <footer className="bg-navy/95 text-cream mt-auto">
       {/* Moroccan-inspired decorative elements */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#E6C200]/5 to-transparent"></div>
       

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Caftan & Jellaba E-Commerce
 
 Une plateforme e-commerce élégante et moderne pour la vente de vêtements traditionnels marocains (caftans et jellabas).
@@ -69,21 +68,6 @@ src/
 
 4. Ouvrir [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-## 📱 Captures d'écran
-
-*À venir...*
-
-## 🧪 Tests
-
-```bash
-npm run test
-# ou
-yarn test
-```
-
-## 📦 Déploiement
-
-L'application est configurée pour un déploiement facile sur Vercel ou Netlify.
 
 ## 🤝 Contribuer
 
