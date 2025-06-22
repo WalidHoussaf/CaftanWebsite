@@ -23,10 +23,6 @@ export default function FeaturedProducts({ category, title, className = '' }: Fe
       <div className="absolute top-20 right-20 w-40 h-40 border border-navy/10 rounded-full opacity-20 animate-pulse-slow"></div>
       <div className="absolute bottom-20 left-20 w-60 h-60 border border-taupe/20 rounded-full opacity-30"></div>
       
-      {/* Animated floating elements */}
-      <div className="absolute top-[15%] left-[15%] w-3 h-3 bg-[#E6C200]/20 rounded-full animate-float"></div>
-      <div className="absolute bottom-[25%] right-[10%] w-2 h-2 bg-navy/10 rounded-full animate-float-delay"></div>
-      
       {/* Moroccan pattern decorative element */}
       <div className="absolute top-10 left-10 w-16 h-16 opacity-10 pointer-events-none rotate-45">
         <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -39,7 +35,7 @@ export default function FeaturedProducts({ category, title, className = '' }: Fe
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto mb-16 text-center">
           <div className="inline-block mb-6 relative">
-            <span className="uppercase tracking-widest text-xs text-navy/70 relative z-10">Curated Selection</span>
+            <span className="font-serif text-2xl text-navy/70 relative z-10">Curated Selection</span>
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
           </div>
           
@@ -73,16 +69,34 @@ export default function FeaturedProducts({ category, title, className = '' }: Fe
           </Link>
         </div>
         
-        {/* Decorative footer element */}
-        <div className="mt-12 flex justify-center">
-          <div className="relative w-40 h-10">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
+        {/* Beautiful horizontal line separator */}
+        <div className="mt-20 flex justify-center">
+          <div className="relative w-full max-w-3xl h-16 flex items-center justify-center">
+            {/* Main horizontal line */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#E6C200]/40 to-transparent"></div>
+            
+            {/* Decorative elements on the line */}
+            <div className="absolute left-1/4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#E6C200]/30 rounded-full"></div>
+            <div className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-4 h-4 border border-[#E6C200]/40 rounded-full flex items-center justify-center">
+              <div className="w-2 h-2 bg-[#E6C200]/50 rounded-full"></div>
             </div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-6 h-6 rounded-full border border-[#E6C200]/30 flex items-center justify-center bg-cream">
-                <div className="w-2 h-2 rounded-full bg-[#E6C200]/50"></div>
-              </div>
+            <div className="absolute left-3/4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#E6C200]/30 rounded-full"></div>
+            
+            {/* Moroccan-inspired decorative elements */}
+            <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-6 h-6">
+              <svg viewBox="0 0 24 24" className="w-full h-full text-[#E6C200]/40">
+                <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+                <path d="M12,6 L18,12 L12,18 L6,12 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
+                <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="0.6" />
+              </svg>
+            </div>
+            
+            <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-6 h-6">
+              <svg viewBox="0 0 24 24" className="w-full h-full text-[#E6C200]/40">
+                <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+                <path d="M12,6 L18,12 L12,18 L6,12 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
+                <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="0.6" />
+              </svg>
             </div>
           </div>
         </div>

@@ -261,11 +261,6 @@ export default function Home() {
       {/* Collections Section */}
       <section className="pt-8 pb-32 bg-cream relative overflow-hidden">
         
-        {/* Animated floating elements */}
-        <div className="absolute top-[15%] right-[15%] w-3 h-3 bg-[#E6C200]/20 rounded-full animate-float"></div>
-        <div className="absolute bottom-[25%] left-[10%] w-2 h-2 bg-navy/10 rounded-full animate-float-delay"></div>
-        <div className="absolute top-[40%] left-[25%] w-4 h-4 border border-navy/10 rotate-45 animate-float-slow"></div>
-        
         {/* Moroccan pattern decorative elements */}
         <div className="absolute top-10 right-10 w-24 h-24 opacity-10 pointer-events-none">
           <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -287,7 +282,7 @@ export default function Home() {
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto mb-20 text-center">
             <div className="inline-block mb-6 relative">
-              <span className="uppercase tracking-widest text-xs text-navy/70 relative z-10">Our Collections</span>
+              <span className="font-serif text-2xl text-navy/70 relative z-10">Our Collections</span>
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
             </div>
             
@@ -530,6 +525,38 @@ export default function Home() {
               </svg>
             </Link>
           </div>
+          
+          {/* Beautiful horizontal line separator */}
+          <div className="mt-20 flex justify-center">
+            <div className="relative w-full max-w-3xl h-16 flex items-center justify-center">
+              {/* Main horizontal line */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-[#E6C200]/40 to-transparent"></div>
+              
+              {/* Decorative elements on the line */}
+              <div className="absolute left-1/4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#E6C200]/30 rounded-full"></div>
+              <div className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-4 h-4 border border-[#E6C200]/40 rounded-full flex items-center justify-center">
+                <div className="w-2 h-2 bg-[#E6C200]/50 rounded-full"></div>
+              </div>
+              <div className="absolute left-3/4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#E6C200]/30 rounded-full"></div>
+              
+              {/* Moroccan-inspired decorative elements */}
+              <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-6 h-6">
+                <svg viewBox="0 0 24 24" className="w-full h-full text-[#E6C200]/40">
+                  <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+                  <path d="M12,6 L18,12 L12,18 L6,12 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
+                  <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="0.6" />
+                </svg>
+              </div>
+              
+              <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-6 h-6">
+                <svg viewBox="0 0 24 24" className="w-full h-full text-[#E6C200]/40">
+                  <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+                  <path d="M12,6 L18,12 L12,18 L6,12 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
+                  <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="0.6" />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
         
         {/* Add CSS for radial gradient */}
@@ -551,19 +578,14 @@ export default function Home() {
       <FeaturedProducts 
         category="jellaba" 
         title="FEATURED JELLABAS" 
-        className="bg-taupe/5 py-32" 
+        className="bg-cream pt-0 pb-32" 
       />
 
       {/* Craftsmanship Section */}
-      <section className="py-32 bg-cream relative overflow-hidden">
+      <section className="bg-cream pt-0 pb-32 relative overflow-hidden">
         {/* Decorative background elements */}
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.02] pointer-events-none"></div>
-        <div className="absolute top-20 right-40 w-32 h-32 border border-navy/5 rounded-full animate-pulse-slow"></div>
-        <div className="absolute bottom-40 left-20 w-24 h-24 border border-taupe/10 rotate-45 animate-float-delay"></div>
-        
-        {/* Animated floating elements */}
-        <div className="absolute top-[25%] right-[15%] w-3 h-3 bg-[#E6C200]/20 rounded-full animate-float"></div>
-        <div className="absolute bottom-[35%] left-[10%] w-2 h-2 bg-navy/10 rounded-full animate-float-delay"></div>
+        <div className="absolute top-20 right-40 w-32 h-32 border border-navy/5 rounded-full"></div>
         
         {/* Moroccan pattern decorative element */}
         <div className="absolute bottom-20 right-20 w-16 h-16 opacity-10 pointer-events-none">
@@ -584,15 +606,13 @@ export default function Home() {
               
               <div className="relative">
                 <div className="inline-block mb-6 relative">
-                  <span className="uppercase tracking-widest text-xs text-navy/70 relative z-10">Our Heritage</span>
+                  <span className="font-serif text-2xl text-navy/70 relative z-10">Our Heritage</span>
                   <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-navy/20 to-transparent"></div>
                 </div>
                 
-                <h2 className="font-serif text-4xl md:text-5xl font-light mb-8 relative">
-                  <span className="bg-gradient-to-r from-navy to-taupe bg-clip-text text-transparent">TRADITIONAL MOROCCAN</span>
-                  <br />
-                  <span className="text-navy">CRAFTSMANSHIP</span>
-                  <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-3 h-3 border-l-2 border-t-2 border-navy/30 -rotate-45 hidden md:block"></div>
+                <h2 className="font-serif text-3xl md:text-6xl font-light mb-8 bg-gradient-to-r from-navy to-taupe bg-clip-text text-transparent">
+                  TRADITIONAL MOROCCAN
+                  <span className="block text-2xl mt-2 text-[#E6C200]/70 font-normal">CRAFTSMANSHIP</span>
                 </h2>
                 
                 <div className="space-y-6 relative">
@@ -615,7 +635,7 @@ export default function Home() {
                 
                 <div className="mt-12 relative inline-block group">
                   <Link href="/about" 
-                    className="uppercase tracking-widest text-sm border border-navy/30 px-8 py-3 rounded-full text-navy transition-all duration-300 group-hover:bg-navy group-hover:text-cream inline-flex items-center">
+                    className="uppercase tracking-widest text-sm border border-navy/30 px-8 py-3 rounded-full text-navy transition-all duration-300 group-hover:bg-navy group-hover:text-cream inline-flex items-center cursor-pointer">
                     <span>Our Story</span>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -659,6 +679,38 @@ export default function Home() {
           </div>
         </div>
         
+        {/* Beautiful horizontal line separator */}
+        <div className="mt-20 flex justify-center">
+          <div className="relative w-full max-w-3xl h-16 flex items-center justify-center">
+            {/* Main horizontal line */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#E6C200]/40 to-transparent"></div>
+            
+            {/* Decorative elements on the line */}
+            <div className="absolute left-1/4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#E6C200]/30 rounded-full"></div>
+            <div className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-4 h-4 border border-[#E6C200]/40 rounded-full flex items-center justify-center">
+              <div className="w-2 h-2 bg-[#E6C200]/50 rounded-full"></div>
+            </div>
+            <div className="absolute left-3/4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#E6C200]/30 rounded-full"></div>
+            
+            {/* Moroccan-inspired decorative elements */}
+            <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-6 h-6">
+              <svg viewBox="0 0 24 24" className="w-full h-full text-[#E6C200]/40">
+                <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+                <path d="M12,6 L18,12 L12,18 L6,12 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
+                <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="0.6" />
+              </svg>
+            </div>
+            
+            <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-6 h-6">
+              <svg viewBox="0 0 24 24" className="w-full h-full text-[#E6C200]/40">
+                <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+                <path d="M12,6 L18,12 L12,18 L6,12 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
+                <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="0.6" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        
         {/* Add CSS for radial gradient */}
         <style jsx>{`
           .bg-radial-subtle {
@@ -668,7 +720,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-32 bg-taupe/5 relative overflow-hidden">
+      <section className="py-32 bg-cream relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.02] pointer-events-none"></div>
         
