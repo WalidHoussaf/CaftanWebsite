@@ -9,9 +9,6 @@ export default function Footer() {
       {/* Moroccan-inspired decorative elements */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#E6C200]/5 to-transparent"></div>
       
-      {/* Moroccan pattern overlay */}
-      <div className="absolute inset-0 bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.03] pointer-events-none"></div>
-      
       {/* Decorative arch - keeping this as it's not an animation */}
       <div className="absolute bottom-0 right-[5%] opacity-5 hidden md:block">
         <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg">

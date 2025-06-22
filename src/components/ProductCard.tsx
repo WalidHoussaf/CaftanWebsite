@@ -10,6 +10,61 @@ import { useCartStore } from '@/store/cartStore';
 import { useWishlistStore } from '@/store/wishlistStore';
 import toast from 'react-hot-toast';
 
+// Color mapping for product colors
+const colorNameMap: { [key: string]: string } = {
+  '#1e40af': 'Royal Blue',
+  '#047857': 'Emerald Green',
+  '#b91c1c': 'Ruby Red',
+  '#d97706': 'Gold',
+  '#94a3b8': 'Silver',
+  '#171717': 'Black',
+  '#fef3c7': 'Ivory',
+  // Additional common colors
+  '#ffffff': 'White',
+  '#f8fafc': 'White',
+  '#f1f5f9': 'Light Gray',
+  '#cbd5e1': 'Gray',
+  '#64748b': 'Dark Gray',
+  '#334155': 'Slate',
+  '#020617': 'Black',
+  '#881337': 'Dark Red',
+  '#9f1239': 'Red',
+  '#dc2626': 'Bright Red',
+  '#ea580c': 'Orange',
+  '#ca8a04': 'Yellow',
+  '#65a30d': 'Lime',
+  '#16a34a': 'Green',
+  '#059669': 'Emerald',
+  '#0d9488': 'Teal',
+  '#0891b2': 'Cyan',
+  '#0284c7': 'Light Blue',
+  '#2563eb': 'Blue',
+  '#4f46e5': 'Indigo',
+  '#7c3aed': 'Violet',
+  '#9333ea': 'Purple',
+  '#c026d3': 'Fuchsia',
+  '#db2777': 'Pink',
+  '#be123c': 'Rose',
+  '#854d0e': 'Brown',
+  '#78350f': 'Dark Brown',
+  '#422006': 'Deep Brown'
+};
+
+const getColorName = (hexColor: string): string => {
+  // Convert the hex color to lowercase for consistent matching
+  const normalizedHex = hexColor.toLowerCase();
+  // Remove any spaces and ensure hex format
+  const formattedHex = normalizedHex.trim().startsWith('#') ? normalizedHex : `#${normalizedHex}`;
+  
+  return colorNameMap[formattedHex] || 
+         // Try to find a close match if exact match not found
+         Object.entries(colorNameMap).find(([key]) => 
+           key.toLowerCase() === formattedHex
+         )?.[1] || 
+         // If no match found, make the hex code more readable
+         formattedHex;
+};
+
 interface ProductCardProps {
   product: ProductType;
 }
@@ -165,20 +220,34 @@ export default function ProductCard({ product }: ProductCardProps) {
         
         {/* Available Colors */}
         {product.colors && product.colors.length > 0 && (
-          <div className="mt-3 flex items-center">
-            <span className="text-xs uppercase tracking-wider text-navy/60 mr-2">Colors:</span>
-            <div className="flex space-x-1">
-              {product.colors.slice(0, 4).map((color, index) => (
+          <div className="mt-3 flex items-center group">
+            <span className="text-xs uppercase tracking-wider text-navy/60 mr-3">Colors</span>
+            <div className="flex items-center space-x-2">
+              {product.colors.slice(0, 3).map((color, index) => (
                 <div
                   key={index}
-                  className="w-3 h-3 rounded-full border border-cream shadow-sm hover:scale-125 transition-transform duration-300"
-                  style={{ backgroundColor: color }}
-                />
+                  className="relative group/color"
+                >
+                  <div
+                    className="w-4 h-4 rounded-full border-2 border-cream shadow-sm transform transition-all duration-300 hover:scale-110 cursor-pointer"
+                    style={{ backgroundColor: color }}
+                  />
+                  {/* Color name tooltip - Adjusted position */}
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-navy/90 text-cream text-xs py-1 px-2 rounded opacity-0 group-hover/color:opacity-100 whitespace-nowrap pointer-events-none transition-opacity duration-200 z-10">
+                    {getColorName(color)}
+                  </div>
+                </div>
               ))}
-              {product.colors.length > 4 && (
-                <span className="text-xs text-navy/60">
-                  +{product.colors.length - 4}
-                </span>
+              {product.colors.length > 3 && (
+                <div className="relative group/more">
+                  <div className="w-4 h-4 rounded-full bg-cream border-2 border-navy/20 flex items-center justify-center text-[10px] text-navy/70 cursor-pointer transform transition-all duration-300 hover:scale-110">
+                    +{product.colors.length - 3}
+                  </div>
+                  {/* More colors tooltip - Adjusted position */}
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-navy/90 text-cream text-xs py-1 px-2 rounded opacity-0 group-hover/more:opacity-100 whitespace-nowrap pointer-events-none transition-opacity duration-200 z-10">
+                    {product.colors.slice(3).map(color => getColorName(color)).join(', ')}
+                  </div>
+                </div>
               )}
             </div>
           </div>

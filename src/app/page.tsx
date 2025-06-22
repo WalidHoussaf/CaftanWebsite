@@ -309,9 +309,6 @@ export default function Home() {
                 </span>
               </div>
               
-              {/* Background pattern */}
-              <div className="absolute inset-0 bg-pattern opacity-10 z-0"></div>
-              
               {/* Overlay with gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-noir/90 via-noir/40 to-transparent z-10 group-hover:opacity-90 transition-opacity duration-500"></div>
               
@@ -409,9 +406,6 @@ export default function Home() {
                   New Arrival
                 </span>
               </div>
-              
-              {/* Background pattern */}
-              <div className="absolute inset-0 bg-pattern opacity-10 z-0"></div>
               
               {/* Overlay with gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-noir/90 via-noir/40 to-transparent z-10 group-hover:opacity-90 transition-opacity duration-500"></div>
@@ -583,17 +577,15 @@ export default function Home() {
 
       {/* Craftsmanship Section */}
       <section className="bg-cream pt-0 pb-32 relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.02] pointer-events-none"></div>
+        {/* Moroccan Zellige design in bottom right */}
         <div className="absolute top-20 right-40 w-32 h-32 border border-navy/5 rounded-full"></div>
         
-        {/* Moroccan pattern decorative element */}
+        {/* Decorative element */}
         <div className="absolute bottom-20 right-20 w-16 h-16 opacity-10 pointer-events-none">
           <svg viewBox="0 0 100 100" className="w-full h-full">
-            <path d="M50,0 L100,50 L50,100 L0,50 Z" fill="none" stroke="#183661" strokeWidth="1" />
-            <path d="M50,10 L90,50 L50,90 L10,50 Z" fill="none" stroke="#183661" strokeWidth="0.8" />
-            <path d="M50,20 L80,50 L50,80 L20,50 Z" fill="none" stroke="#183661" strokeWidth="0.6" />
-            <circle cx="50" cy="50" r="10" fill="none" stroke="#E6C200" strokeWidth="0.5" />
+            <path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="#E6C200" strokeWidth="1" />
+            <path d="M35,35 L65,35 L65,65 L35,65 Z" fill="none" stroke="#E6C200" strokeWidth="0.8" />
+            <circle cx="50" cy="50" r="10" fill="none" stroke="#183661" strokeWidth="0.5" />
             <circle cx="50" cy="50" r="5" fill="none" stroke="#E6C200" strokeWidth="0.3" />
           </svg>
         </div>
@@ -720,53 +712,20 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-32 bg-cream relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.02] pointer-events-none"></div>
-        
-        {/* Moroccan-inspired decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#E6C200]/5 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#E6C200]/5 to-transparent"></div>
-        
-        {/* Floating decorative elements */}
-        <div className="absolute top-20 left-[10%] w-40 h-40 rounded-full bg-gradient-to-br from-navy/5 to-transparent animate-float-slow"></div>
-        <div className="absolute bottom-20 right-[10%] w-60 h-60 rounded-full bg-gradient-to-tl from-taupe/5 to-transparent animate-float-slow-reverse"></div>
-        
-        {/* Moroccan lantern decorative element */}
-        <div className="absolute top-40 right-[5%] opacity-10 animate-float-slow">
-          <svg width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M60 10C60 10 55 25 55 30C55 35 65 35 65 30C65 25 60 10 60 10Z" fill="#E6C200"/>
-            <path d="M60 30L30 60V150L60 180L90 150V60L60 30Z" fill="none" stroke="#E6C200" strokeWidth="2"/>
-            <path d="M30 60L90 60" stroke="#E6C200" strokeWidth="2"/>
-            <path d="M30 90L90 90" stroke="#E6C200" strokeWidth="2"/>
-            <path d="M30 120L90 120" stroke="#E6C200" strokeWidth="2"/>
-            <path d="M60 30L60 180" stroke="#E6C200" strokeWidth="2"/>
-            <path d="M45 45L45 165" stroke="#E6C200" strokeWidth="1"/>
-            <path d="M75 45L75 165" stroke="#E6C200" strokeWidth="1"/>
-          </svg>
-        </div>
-        
-        {/* Moroccan arch decorative element */}
-        <div className="absolute bottom-40 left-[5%] opacity-10 animate-float-slow-reverse">
-          <svg width="120" height="140" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 140V60C10 30 60 0 110 60V140" stroke="#E6C200" strokeWidth="2"/>
-            <path d="M10 140H110" stroke="#E6C200" strokeWidth="2"/>
-            <path d="M30 140V70" stroke="#E6C200" strokeWidth="1"/>
-            <path d="M60 140V60" stroke="#E6C200" strokeWidth="1"/>
-            <path d="M90 140V70" stroke="#E6C200" strokeWidth="1"/>
-          </svg>
-        </div>
-        
+      <section className="relative pt-8 pb-24 bg-cream overflow-hidden">
         <div className="container-custom relative z-10">
           <div className="max-w-2xl mx-auto mb-20 text-center">
             <div className="inline-block mb-6 relative">
-              <span className="uppercase tracking-widest text-xs text-navy/70 relative z-10">Testimonials</span>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
+              <span className="font-serif text-2xl text-navy/70 relative z-10">Testimonials</span>
+              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-navy/20 to-transparent"></div>
             </div>
             
             {/* Enhanced title with Moroccan-inspired decorative elements */}
             <div className="relative">
-              <h2 className="font-serif text-4xl md:text-5xl font-light mb-8 uppercase tracking-wider bg-gradient-to-r from-navy to-taupe bg-clip-text text-transparent">Client Experiences</h2>
+              <h2 className="font-serif text-3xl md:text-6xl font-light mb-8 bg-gradient-to-r from-navy to-taupe bg-clip-text text-transparent">
+                CLIENT STORIES
+                <span className="block text-2xl mt-2 text-[#E6C200]/70 font-normal">AUTHENTIC EXPERIENCES</span>
+              </h2>
               
               {/* Decorative line under heading */}
               <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-40 h-[2px]">
@@ -777,7 +736,7 @@ export default function Home() {
               <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 rotate-45 w-3 h-3 bg-[#E6C200]/30"></div>
             </div>
             
-            <p className="text-navy/80 mx-auto max-w-lg leading-relaxed mt-10">
+            <p className="text-navy/80 max-w-lg mx-auto leading-relaxed mb-8">
               Our customers love our products and we're proud to share their stories with you.
             </p>
           </div>
@@ -786,9 +745,6 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12">
             {/* Testimonial 1 */}
             <div className="bg-cream/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden relative">
-              {/* Moroccan-inspired decorative pattern overlay */}
-              <div className="absolute inset-0 bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.03] pointer-events-none"></div>
-              
               {/* Decorative top border */}
               <div className="h-1 w-full bg-gradient-to-r from-navy/70 via-[#E6C200]/50 to-navy/30"></div>
               
@@ -799,18 +755,11 @@ export default function Home() {
               <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-[#E6C200]/20 z-20 pointer-events-none"></div>
               
               <div className="p-8 md:p-10 relative">
-                {/* Quote icon with enhanced styling */}
-                <div className="absolute top-6 right-6 text-[#E6C200]/20 transform -rotate-180 scale-150 group-hover:scale-[2] transition-transform duration-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-                
                 {/* Client profile with enhanced styling */}
                 <div className="flex items-center mb-8">
                   <div className="w-16 h-16 bg-gradient-to-br from-navy to-[#E6C200] rounded-full mr-4 flex items-center justify-center text-cream overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-500 group-hover:scale-105">
                     <Image 
-                      src="/images/testimonials/client1.jpg" 
+                      src="/images/testimonials/sarah.jpg" 
                       alt="Sophie Martin"
                       width={64}
                       height={64}
@@ -846,13 +795,13 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span className="text-xs text-navy/50 italic">Paris, France</span>
+                    <span className="text-xs text-navy/50">Mohammedia, Morocco</span>
                   </div>
                   <div className="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-navy/40 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-xs text-navy/50">June 2024</span>
+                    <span className="text-xs text-navy/50">June 2025</span>
                   </div>
                 </div>
               </div>
@@ -860,9 +809,6 @@ export default function Home() {
             
             {/* Testimonial 2 */}
             <div className="bg-cream/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden relative">
-              {/* Moroccan-inspired decorative pattern overlay */}
-              <div className="absolute inset-0 bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.03] pointer-events-none"></div>
-              
               {/* Decorative top border */}
               <div className="h-1 w-full bg-gradient-to-r from-[#E6C200]/50 via-navy/50 to-[#E6C200]/50"></div>
               
@@ -873,18 +819,11 @@ export default function Home() {
               <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-[#E6C200]/20 z-20 pointer-events-none"></div>
               
               <div className="p-8 md:p-10 relative">
-                {/* Quote icon with enhanced styling */}
-                <div className="absolute top-6 right-6 text-[#E6C200]/20 transform -rotate-180 scale-150 group-hover:scale-[2] transition-transform duration-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-                
                 {/* Client profile with enhanced styling */}
                 <div className="flex items-center mb-8">
                   <div className="w-16 h-16 bg-gradient-to-br from-[#E6C200] to-navy rounded-full mr-4 flex items-center justify-center text-cream overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-500 group-hover:scale-105">
                     <Image 
-                      src="/images/testimonials/client2.jpg" 
+                      src="/images/testimonials/amina.jpg" 
                       alt="Leila Bensaid"
                       width={64}
                       height={64}
@@ -920,13 +859,13 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span className="text-xs text-navy/50 italic">Casablanca, Morocco</span>
+                    <span className="text-xs text-navy/50">Rabat, Morocco</span>
                   </div>
                   <div className="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-navy/40 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-xs text-navy/50">May 2024</span>
+                    <span className="text-xs text-navy/50">May 2025</span>
                   </div>
                 </div>
               </div>
@@ -934,9 +873,6 @@ export default function Home() {
             
             {/* Testimonial 3 */}
             <div className="bg-cream/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden relative">
-              {/* Moroccan-inspired decorative pattern overlay */}
-              <div className="absolute inset-0 bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.03] pointer-events-none"></div>
-              
               {/* Decorative top border */}
               <div className="h-1 w-full bg-gradient-to-r from-navy/30 via-[#E6C200]/50 to-navy/70"></div>
               
@@ -947,18 +883,11 @@ export default function Home() {
               <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-[#E6C200]/20 z-20 pointer-events-none"></div>
               
               <div className="p-8 md:p-10 relative">
-                {/* Quote icon with enhanced styling */}
-                <div className="absolute top-6 right-6 text-[#E6C200]/20 transform -rotate-180 scale-150 group-hover:scale-[2] transition-transform duration-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-                
                 {/* Client profile with enhanced styling */}
                 <div className="flex items-center mb-8">
                   <div className="w-16 h-16 bg-gradient-to-br from-navy/80 to-[#E6C200]/80 rounded-full mr-4 flex items-center justify-center text-cream overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-500 group-hover:scale-105">
                     <Image 
-                      src="/images/testimonials/client3.jpg" 
+                      src="/images/testimonials/john.jpg" 
                       alt="James Wilson"
                       width={64}
                       height={64}
@@ -994,13 +923,13 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span className="text-xs text-navy/50 italic">London, UK</span>
+                    <span className="text-xs text-navy/50">Casablanca, Morocco</span>
                   </div>
                   <div className="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-navy/40 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-xs text-navy/50">April 2024</span>
+                    <span className="text-xs text-navy/50">April 2025</span>
                   </div>
                 </div>
               </div>
@@ -1019,64 +948,41 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Add animation keyframes */}
-        <style jsx>{`
-          @keyframes float-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-          }
-          
-          @keyframes float-slow-reverse {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(15px); }
-          }
-          
-          .animate-float-slow {
-            animation: float-slow 8s ease-in-out infinite;
-          }
-          
-          .animate-float-slow-reverse {
-            animation: float-slow-reverse 10s ease-in-out infinite;
-          }
-        `}</style>
+        {/* Beautiful horizontal line separator */}
+        <div className="mt-20 flex justify-center">
+          <div className="relative w-full max-w-3xl h-16 flex items-center justify-center">
+            {/* Main horizontal line */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#E6C200]/40 to-transparent"></div>
+            
+            {/* Decorative elements on the line */}
+            <div className="absolute left-1/4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#E6C200]/30 rounded-full"></div>
+            <div className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-4 h-4 border border-[#E6C200]/40 rounded-full flex items-center justify-center">
+              <div className="w-2 h-2 bg-[#E6C200]/50 rounded-full"></div>
+            </div>
+            <div className="absolute left-3/4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#E6C200]/30 rounded-full"></div>
+            
+            {/* Moroccan-inspired decorative elements */}
+            <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-6 h-6">
+              <svg viewBox="0 0 24 24" className="w-full h-full text-[#E6C200]/40">
+                <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+                <path d="M12,6 L18,12 L12,18 L6,12 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
+                <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="0.6" />
+              </svg>
+            </div>
+            
+            <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-6 h-6">
+              <svg viewBox="0 0 24 24" className="w-full h-full text-[#E6C200]/40">
+                <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+                <path d="M12,6 L18,12 L12,18 L6,12 Z" fill="none" stroke="currentColor" strokeWidth="0.8" />
+                <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="0.6" />
+              </svg>
+            </div>
+          </div>
+        </div>
       </section>
       
       {/* Newsletter Section */}
-      <section className="pb-32 bg-cream relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-[0.02] pointer-events-none"></div>
-        
-        {/* Moroccan-inspired decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#E6C200]/5 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#E6C200]/5 to-transparent"></div>
-        
-        {/* Floating decorative elements */}
-        <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-navy/[0.02] animate-float-slow"></div>
-        <div className="absolute -bottom-40 -left-20 w-96 h-96 rounded-full bg-taupe/[0.03] animate-float-slow-reverse"></div>
-        
-        {/* Moroccan decorative arch */}
-        <div className="absolute top-10 left-[5%] opacity-5 animate-float-slow">
-          <svg width="120" height="140" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 140V60C10 30 60 0 110 60V140" stroke="#183661" strokeWidth="2"/>
-            <path d="M10 140H110" stroke="#183661" strokeWidth="2"/>
-            <path d="M30 140V70" stroke="#183661" strokeWidth="1"/>
-            <path d="M60 140V60" stroke="#183661" strokeWidth="1"/>
-            <path d="M90 140V70" stroke="#183661" strokeWidth="1"/>
-          </svg>
-        </div>
-        
-        {/* Moroccan decorative pattern */}
-        <div className="absolute bottom-10 right-[5%] opacity-5 animate-float-slow-reverse">
-          <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M75 0L150 75L75 150L0 75L75 0Z" stroke="#E6C200" strokeWidth="1"/>
-            <path d="M75 25L125 75L75 125L25 75L75 25Z" stroke="#E6C200" strokeWidth="1"/>
-            <path d="M75 50L100 75L75 100L50 75L75 50Z" stroke="#E6C200" strokeWidth="1"/>
-            <circle cx="75" cy="75" r="10" stroke="#E6C200" strokeWidth="1"/>
-            <path d="M0 75H150" stroke="#E6C200" strokeWidth="0.5"/>
-            <path d="M75 0V150" stroke="#E6C200" strokeWidth="0.5"/>
-          </svg>
-        </div>
-        
+      <section className="bg-cream pt-8 pb-24 relative overflow-hidden">
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-navy/[0.03] to-taupe/[0.05] rounded-2xl p-8 md:p-16 shadow-sm relative overflow-hidden">
@@ -1089,26 +995,12 @@ export default function Home() {
               <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-[#E6C200]/20 rounded-bl-lg"></div>
               <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-[#E6C200]/20 rounded-br-lg"></div>
               
-              {/* Subtle background pattern */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-30 pointer-events-none">
-                <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <defs>
-                    <pattern id="moroccan-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(230, 194, 0, 0.05)" strokeWidth="0.5" />
-                      <path d="M 10 0 L 10 20" fill="none" stroke="rgba(230, 194, 0, 0.03)" strokeWidth="0.5" />
-                      <path d="M 0 10 L 20 10" fill="none" stroke="rgba(230, 194, 0, 0.03)" strokeWidth="0.5" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#moroccan-grid)" />
-                </svg>
-              </div>
-              
               <div className="text-center mb-12 relative">
                 {/* Decorative element above title */}
                 <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#E6C200]/30 to-transparent mx-auto mb-8"></div>
                 
                 <div className="inline-block mb-6 relative">
-                  <span className="uppercase tracking-widest text-xs text-navy/70 relative z-10">Stay Connected</span>
+                  <span className="uppercase tracking-widest text-2xl text-[#E6C200]/70 relative z-10">Stay Connected</span>
                   <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#E6C200]/30 to-transparent"></div>
                 </div>
                 
@@ -1139,86 +1031,136 @@ export default function Home() {
                       className="w-full px-6 py-4 bg-cream/80 backdrop-blur-sm border border-[#E6C200]/20 rounded-full text-navy focus:outline-none focus:border-[#E6C200]/50 focus:ring-2 focus:ring-[#E6C200]/10 transition-all duration-300 shadow-sm"
                       required
                     />
-                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#E6C200]/30 to-navy/30 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
                   </div>
-                  
                   <button
                     type="submit"
-                    className="px-8 py-4 bg-gradient-to-r from-navy to-navy/90 text-cream rounded-full uppercase tracking-widest text-sm transform hover:translate-y-[-2px] hover:shadow-lg transition-all duration-300 flex items-center justify-center group relative overflow-hidden"
+                    className="px-8 py-4 bg-navy text-cream rounded-full hover:bg-navy/90 transition-all duration-300 shadow-sm flex items-center justify-center group"
                   >
-                    <span className="relative z-10">Subscribe</span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-[#E6C200]/80 to-[#E6C200]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <span>Subscribe</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </button>
                 </div>
-                
-                {/* Benefits of subscribing */}
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#E6C200]/10 flex items-center justify-center mb-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#E6C200]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v13m0-13V6a4 4 0 00-4-4H8.8a4 4 0 00-2.6.9l-.7.7a4 4 0 00-.9 2.6V8" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v13m0-13V6a4 4 0 014-4h.2a4 4 0 012.6.9l.7.7a4 4 0 01.9 2.6V8" />
-                      </svg>
-                    </div>
-                    <span className="text-xs text-navy/70">Exclusive Offers</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#E6C200]/10 flex items-center justify-center mb-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#E6C200]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                    </div>
-                    <span className="text-xs text-navy/70">Early Access</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#E6C200]/10 flex items-center justify-center mb-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#E6C200]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 11l5-5m0 0l5 5m-5-5v12" />
-                      </svg>
-                    </div>
-                    <span className="text-xs text-navy/70">Style Tips</span>
-                  </div>
-                </div>
-                
-                <div className="text-center mt-6 text-xs text-navy/50">
-                  <p>By subscribing, you agree to our <Link href="/privacy-policy" className="underline hover:text-navy transition-colors duration-300">Privacy Policy</Link></p>
-                </div>
               </form>
-              
-              {/* Social media links with enhanced styling */}
-              <div className="mt-12 flex justify-center">
-                <div className="bg-cream/50 backdrop-blur-sm px-8 py-4 rounded-full shadow-sm border border-[#E6C200]/10">
-                  <div className="flex space-x-6">
-                    <a href="#" className="text-navy/60 hover:text-[#E6C200] transition-colors duration-300 transform hover:scale-110" aria-label="Facebook">
-                      <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                      </svg>
-                    </a>
-                    <a href="#" className="text-navy/60 hover:text-[#E6C200] transition-colors duration-300 transform hover:scale-110" aria-label="Instagram">
-                      <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                      </svg>
-                    </a>
-                    <a href="#" className="text-navy/60 hover:text-[#E6C200] transition-colors duration-300 transform hover:scale-110" aria-label="Twitter">
-                      <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                      </svg>
-                    </a>
-                    <a href="#" className="text-navy/60 hover:text-[#E6C200] transition-colors duration-300 transform hover:scale-110" aria-label="Pinterest">
-                      <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Footer - Last Section */}
+      <footer className="bg-navy/95 text-cream mt-auto">
+        <div className="container-custom py-16">
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            {/* Brand Section */}
+            <div className="space-y-6">
+              <h3 className="font-serif text-2xl text-[#E6C200]">KONOZ KHADIJA</h3>
+              <p className="text-cream/70 text-sm leading-relaxed">
+                Discover the timeless beauty of Moroccan fashion through our carefully curated collection of handcrafted caftans and jellabas.
+              </p>
+              <div className="flex space-x-4">
+                <a href="#" className="text-cream/60 hover:text-[#E6C200] transition-colors">
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                  </svg>
+                </a>
+                <a href="#" className="text-cream/60 hover:text-[#E6C200] transition-colors">
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.509.5.902 1.105 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772c-.5.509-1.105.902-1.772 1.153-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z" />
+                  </svg>
+                </a>
+                <a href="#" className="text-cream/60 hover:text-[#E6C200] transition-colors">
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="font-serif text-lg mb-6 text-[#E6C200]">Quick Links</h4>
+              <ul className="space-y-4">
+                <li>
+                  <Link href="/collections" className="text-cream/70 hover:text-[#E6C200] transition-colors">Collections</Link>
+                </li>
+                <li>
+                  <Link href="/about" className="text-cream/70 hover:text-[#E6C200] transition-colors">About Us</Link>
+                </li>
+                <li>
+                  <Link href="/categories/caftans" className="text-cream/70 hover:text-[#E6C200] transition-colors">Caftans</Link>
+                </li>
+                <li>
+                  <Link href="/categories/jellabas" className="text-cream/70 hover:text-[#E6C200] transition-colors">Jellabas</Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Customer Service */}
+            <div>
+              <h4 className="font-serif text-lg mb-6 text-[#E6C200]">Customer Service</h4>
+              <ul className="space-y-4">
+                <li>
+                  <Link href="/contact" className="text-cream/70 hover:text-[#E6C200] transition-colors">Contact Us</Link>
+                </li>
+                <li>
+                  <Link href="/shipping" className="text-cream/70 hover:text-[#E6C200] transition-colors">Shipping Info</Link>
+                </li>
+                <li>
+                  <Link href="/returns" className="text-cream/70 hover:text-[#E6C200] transition-colors">Returns & Exchanges</Link>
+                </li>
+                <li>
+                  <Link href="/size-guide" className="text-cream/70 hover:text-[#E6C200] transition-colors">Size Guide</Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Information */}
+            <div>
+              <h4 className="font-serif text-lg mb-6 text-[#E6C200]">Contact Us</h4>
+              <ul className="space-y-4">
+                <li className="flex items-center space-x-3 text-cream/70">
+                  <svg className="h-7 w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span> Résidence Alia, Quartier Azzouhour, n°27, Mohammédia</span>
+                </li>
+                <li className="flex items-center space-x-3 text-cream/70">
+                  <svg className="h-7 w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span>info@konozkhadija.com</span>
+                </li>
+                <li className="flex items-center space-x-3 text-cream/70">
+                  <svg className="h-7 w-7 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <span>+2125 24 40 00 00</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Footer Bottom */}
+          <div className="border-t border-cream/10 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <p className="text-cream/60 text-sm">
+                © 2025 Konoz Khadija. All rights reserved.
+              </p>
+              <div className="flex space-x-6">
+                <Link href="/privacy-policy" className="text-cream/60 hover:text-[#E6C200] transition-colors text-sm">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms" className="text-cream/60 hover:text-[#E6C200] transition-colors text-sm">
+                  Terms of Service
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 } 

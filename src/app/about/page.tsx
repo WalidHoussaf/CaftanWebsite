@@ -7,7 +7,6 @@ export default function AboutPage() {
     <div className="bg-cream min-h-screen pt-24 pb-16">
       {/* Hero section */}
       <div className="relative h-80 bg-navy/90 overflow-hidden mb-12">
-        <div className="absolute inset-0 bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-10"></div>
         <div className="container-custom h-full flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl font-serif text-cream mb-4">Our Story</h1>
           <p className="text-cream/80 max-w-2xl">
@@ -200,7 +199,6 @@ export default function AboutPage() {
 
         {/* Call to action */}
         <div className="bg-navy/90 rounded-lg overflow-hidden relative">
-          <div className="absolute inset-0 bg-[url('/images/pattern-overlay.png')] bg-repeat opacity-10"></div>
           <div className="relative p-10 md:p-16 text-center">
             <h2 className="text-3xl font-serif text-cream mb-4">Experience Moroccan Craftsmanship</h2>
             <p className="text-cream/80 max-w-2xl mx-auto mb-8">

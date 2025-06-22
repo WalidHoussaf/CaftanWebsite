@@ -62,41 +62,36 @@ export default function WishlistPage() {
           </div>
         </div>
         
-        {/* Decorative border with Moroccan pattern */}
-        <div className="relative h-px w-full mb-12">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
-          <div className="absolute inset-0 flex justify-center">
-            <div className="h-5 w-20 -top-2 relative bg-cream flex items-center justify-center">
-              <div className="h-3 w-12 border-t border-b border-gold/30"></div>
-            </div>
+        {/* Decorative border */}
+        <div className="max-w-4xl mx-auto">
+          <div className="border-2 border-[#E6C200]/10 rounded-2xl p-8 md:p-16 relative">
+            {wishlistItems.length === 0 ? (
+              <div className="text-center py-16 max-w-md mx-auto">
+                <div className="mb-6 mx-auto w-16 h-16 rounded-full bg-navy/5 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-navy/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h2 className="text-xl font-medium text-navy mb-2">Your wishlist is empty</h2>
+                <p className="text-navy/60 mb-8">
+                  Add items you love to your wishlist. Review them anytime and easily move them to your cart.
+                </p>
+                <Link 
+                  href="/" 
+                  className="inline-block px-6 py-3 bg-navy text-cream rounded-md hover:bg-navy/90 transition-colors"
+                >
+                  Discover Products
+                </Link>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {wishlistItems.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
-        
-        {wishlistItems.length === 0 ? (
-          <div className="text-center py-16 max-w-md mx-auto">
-            <div className="mb-6 mx-auto w-16 h-16 rounded-full bg-navy/5 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-navy/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
-            <h2 className="text-xl font-medium text-navy mb-2">Your wishlist is empty</h2>
-            <p className="text-navy/60 mb-8">
-              Add items you love to your wishlist. Review them anytime and easily move them to your cart.
-            </p>
-            <Link 
-              href="/" 
-              className="inline-block px-6 py-3 bg-navy text-cream rounded-md hover:bg-navy/90 transition-colors"
-            >
-              Discover Products
-            </Link>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {wishlistItems.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        )}
       </div>
     </main>
   );

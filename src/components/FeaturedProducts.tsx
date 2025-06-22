@@ -100,6 +100,10 @@ export default function FeaturedProducts({ category, title, className = '' }: Fe
             </div>
           </div>
         </div>
+        
+        {/* Decorative element */}
+        <div className="absolute bottom-20 right-20 w-16 h-16 opacity-10 pointer-events-none">
+        </div>
       </div>
     </section>
   );
