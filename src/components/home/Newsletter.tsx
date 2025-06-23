@@ -26,7 +26,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="bg-cream pt-8 pb-24 relative overflow-hidden">
+    <section className="bg-cream pt-8 pb-32 relative overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-navy/[0.03] to-taupe/[0.05] rounded-2xl p-8 md:p-16 shadow-sm relative overflow-hidden">

@@ -5,11 +5,11 @@ import Image from 'next/image';
 const testimonials = [
   {
     id: 1,
-    name: "Sophie Martin",
+    name: "Zineb Lahbib",
     location: "Mohammedia, Morocco",
     date: "June 2025",
     rating: 5,
-    image: "/images/testimonials/sarah.jpg",
+    image: "/images/testimonials/zineb.jpg",
     text: "I ordered a caftan for my sister's wedding and was amazed by the quality and details. The embroidery is beautiful and the colors exactly as in the photos.",
     gradient: "from-navy/70 via-[#E6C200]/50 to-navy/30"
   },
@@ -19,17 +19,17 @@ const testimonials = [
     location: "Rabat, Morocco",
     date: "May 2025",
     rating: 5,
-    image: "/images/testimonials/amina.jpg",
+    image: "/images/testimonials/leila.jpg",
     text: "The jellaba I purchased has become my favorite outfit for special occasions. The fabric is of very high quality and the comfort is incredible. I highly recommend!",
     gradient: "from-[#E6C200]/50 via-navy/50 to-[#E6C200]/50"
   },
   {
     id: 3,
-    name: "James Wilson",
+    name: "Kamal El Haddad",
     location: "Casablanca, Morocco",
     date: "April 2025",
     rating: 4,
-    image: "/images/testimonials/john.jpg",
+    image: "/images/testimonials/kamal.jpg",
     text: "I bought a caftan as a gift for my wife and she absolutely loves it. The craftsmanship is exceptional and the customer service was outstanding.",
     gradient: "from-navy/30 via-[#E6C200]/50 to-navy/70"
   }

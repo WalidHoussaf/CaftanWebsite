@@ -6,7 +6,7 @@ import FeaturedProducts from '@/components/FeaturedProducts';
 import Craftsmanship from '@/components/home/Craftsmanship';
 import Testimonials from '@/components/home/Testimonials';
 import Newsletter from '@/components/home/Newsletter';
-import Footer from '@/components/Footer';
+import Footer from '@/components/home/Footer';
 
 export default function Home() {
   return (
@@ -48,7 +48,7 @@ export default function Home() {
       
       {/* Newsletter Section */}
       <Newsletter />
-
+      
       {/* Footer Section */}
       <Footer />
     </div>
