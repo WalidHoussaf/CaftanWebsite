@@ -39,7 +39,7 @@ export default function FeaturedProducts({ category, title, className = '' }: Fe
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
           </div>
           
-          <h2 className="font-serif text-4xl md:text-5xl font-light mb-8 bg-gradient-to-r from-navy to-taupe bg-clip-text text-transparent">
+          <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-8 bg-gradient-to-r from-navy to-taupe bg-clip-text text-transparent">
             {title}
             <span className="block text-xl mt-2 text-[#E6C200]/70 font-normal">HANDCRAFTED EXCELLENCE</span>
           </h2>
