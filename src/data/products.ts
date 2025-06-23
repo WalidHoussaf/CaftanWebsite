@@ -70,7 +70,7 @@ export const productsData: ProductType[] = [
     material: "Coton et soie mélangés",
     occasions: ["mariage", "fête", "quotidien"],
     isAvailable: true,
-    isFeatured: false,
+    isFeatured: true,
     isNew: false,
     stock: 5,
     averageRating: 4.6,
@@ -96,7 +96,7 @@ export const productsData: ProductType[] = [
     material: "Mousseline de soie",
     occasions: ["mariage", "cérémonie", "fête"],
     isAvailable: true,
-    isFeatured: false,
+    isFeatured: true,
     isNew: true,
     stock: 15,
     averageRating: 4.7,
@@ -198,24 +198,24 @@ export const productsData: ProductType[] = [
       "/images/jellabas/jellaba3-detail.jpg"
     ],
     colors: ["#1e3a8a", "#f8fafc", "#334155"],
-    sizes: ["S", "M", "L", "XL", "XXL", "XXXL"],
-    material: "Coton tissé",
+    sizes: ["S", "M", "L", "XL"],
+    material: "Coton léger",
     occasions: ["quotidien", "ramadan", "fête"],
     isAvailable: true,
-    isFeatured: false,
+    isFeatured: true,
     isNew: false,
-    stock: 25,
-    averageRating: 4.4,
+    stock: 18,
+    averageRating: 4.6,
     details: {
-      fabricDetails: "Coton tissé de haute qualité avec broderies contrastantes",
-      designFeatures: ["Col mao", "Capuche doublée", "Poches passepoilées"],
-      careInstructions: "Lavable en machine à 30°C, séchage à l'air libre"
+      fabricDetails: "Coton léger de haute qualité avec broderies contrastées",
+      designFeatures: ["Capuche classique", "Poches dissimulées", "Broderies géométriques"],
+      careInstructions: "Lavable en machine, programme délicat"
     }
   },
   {
     id: "jellaba-04",
-    name: "Jellaba Camel Classique",
-    description: "Jellaba classique en couleur camel avec des finitions élégantes, un basique intemporel du garde-robe traditionnel.",
+    name: "Jellaba Verte Olive",
+    description: "Jellaba confortable en vert olive avec des finitions élégantes, parfaite pour un style décontracté chic.",
     price: 169.99,
     oldPrice: null,
     category: "jellaba",
@@ -223,19 +223,19 @@ export const productsData: ProductType[] = [
       "/images/jellabas/jellaba4.jpg",
       "/images/jellabas/jellaba4-detail.jpg"
     ],
-    colors: ["#92400e", "#78350f", "#f8fafc"],
+    colors: ["#4d7c0f", "#65a30d", "#84cc16"],
     sizes: ["S", "M", "L", "XL"],
     material: "Lin et coton",
     occasions: ["quotidien", "ramadan"],
     isAvailable: true,
-    isFeatured: false,
+    isFeatured: true,
     isNew: true,
-    stock: 18,
-    averageRating: 4.6,
+    stock: 25,
+    averageRating: 4.4,
     details: {
-      fabricDetails: "Mélange de lin et coton respirant pour un confort optimal",
-      designFeatures: ["Coupe ample", "Capuche traditionnelle", "Finitions ton sur ton"],
-      careInstructions: "Lavage à l'eau froide, repassage à température moyenne"
+      fabricDetails: "Mélange de lin et coton respirant",
+      designFeatures: ["Capuche ajustable", "Manches raglan", "Poches latérales"],
+      careInstructions: "Lavable en machine à 30°C"
     }
   },
   {

@@ -30,61 +30,97 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       subtitle: 'A Legacy of Luxury',
       description: 'Discover our exclusive collection of traditional Moroccan caftans, perfect for special occasions, weddings and ceremonies. Each piece is meticulously crafted with high-quality materials and exquisite handmade embroidery.',
       banner: '/images/banners/caftan-banner.jpg',
+      features: [
+        { title: 'Handcrafted Excellence', description: 'Each piece is meticulously crafted by skilled artisans' },
+        { title: 'Premium Materials', description: 'Finest silks, velvets, and premium fabrics' },
+        { title: 'Traditional Design', description: 'Authentic Moroccan patterns and motifs' },
+        { title: 'Modern Elegance', description: 'Contemporary styles with traditional touches' }
+      ]
     },
     jellaba: {
       title: 'Jellabas',
       subtitle: 'Timeless Tradition',
       description: 'Explore our selection of authentic Moroccan jellabas, combining comfort and elegance. Ideal for everyday wear or special occasions such as Ramadan, our jellabas are made with quality fabrics and traditional craftsmanship.',
       banner: '/images/banners/jellaba-banner.jpg',
+      features: [
+        { title: 'Comfort First', description: 'Designed for everyday comfort and style' },
+        { title: 'Quality Fabrics', description: 'Breathable materials for all seasons' },
+        { title: 'Versatile Design', description: 'Perfect for both casual and formal occasions' },
+        { title: 'Traditional Touch', description: 'Authentic Moroccan craftsmanship' }
+      ]
     },
   };
 
-  const { title, subtitle, description, banner } = categoryInfo[categoryParam];
+  const { title, subtitle, description, banner, features } = categoryInfo[categoryParam];
 
   return (
-    <div className="bg-cream">
-      {/* Category Banner - Full Height */}
-      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src={banner}
-            alt={title}
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-            quality={90}
-          />
-        </div>
-        <div className="absolute inset-0 bg-noir/40"></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center max-w-4xl px-6">
-            <span className="uppercase tracking-widest text-xs text-cream/90 mb-6 block">Our Collection</span>
-            <h1 className="font-serif text-5xl md:text-7xl font-light text-cream mb-6">{title}</h1>
-            <h2 className="font-serif text-xl md:text-2xl text-cream/90 italic mb-8">{subtitle}</h2>
+    <div className="bg-gradient-to-b from-cream to-white">
+      {/* Category Header - Clean Design */}
+      <section className="relative w-full bg-[#2D4F2B] pt-40 pb-20">
+        <div className="container-custom">
+          <div className="text-center max-w-4xl mx-auto px-6">
+            <span className="uppercase tracking-widest text-xl text-[#FFF1CA] mb-6 block font-light">
+              Our Collection
+            </span>
+            <div className="inline-block mb-6 relative">
+              <h1 className="font-serif text-4xl md:text-6xl font-semibold bg-gradient-to-r from-[#FFF1CA] to-[#FFB823] bg-clip-text text-transparent mb-6 relative z-10">{title}</h1>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-[#FFB823] to-transparent"></div>
+            </div>
+            <h2 className="font-serif text-lg md:text-xl text-[#FFF1CA] mb-8">{subtitle}</h2>
+            
+            {/* Decorative Elements */}
+            <div className="w-32 h-px mx-auto bg-gradient-to-r from-transparent via-[#E6C200]/30 to-transparent mt-8"></div>
           </div>
         </div>
+        
+        {/* Subtle Decorative Circles */}
+        <div className="absolute top-48 right-8 w-32 h-32 border border-navy/10 rounded-full opacity-30"></div>
+        <div className="absolute bottom-8 left-8 w-48 h-48 border border-[#E6C200]/10 rounded-full opacity-20"></div>
       </section>
 
       {/* Collection Description */}
-      <section className="py-20 bg-cream">
+      <section className="py-20 relative overflow-hidden">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-4xl mx-auto mb-16 text-center">
+            <div className="inline-block mb-6 relative">
+              <span className="font-serif text-2xl text-navy/70 relative z-10">About the Collection</span>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
+            </div>
             <p className="text-navy/80 text-lg leading-relaxed">{description}</p>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+            {features.map((feature, index) => (
+              <div 
+                key={index} 
+                className="p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-taupe/10 hover:border-[#E6C200]/20 transition-all duration-300"
+              >
+                <h3 className="font-serif text-xl text-navy mb-3">{feature.title}</h3>
+                <p className="text-navy/70">{feature.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Filters & Products Section */}
-      <section className="py-12 bg-cream">
+      <section className="py-12 relative">
         <div className="container-custom">
-          <div className="flex flex-wrap items-center justify-between mb-12 border-b border-taupe/20 pb-6">
-            <h3 className="font-serif text-2xl font-light text-navy mb-4 md:mb-0">Browse Collection</h3>
+          <div className="flex flex-wrap items-center justify-between mb-12">
+            <div className="inline-block mb-6 relative">
+              <span className="font-serif text-2xl text-navy/70 relative z-10">Browse Collection</span>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
+            </div>
           </div>
 
           {/* Products Grid */}
           <CategoryProducts category={categoryParam} />
         </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-20 right-20 w-40 h-40 border border-navy/10 rounded-full opacity-20 animate-pulse-slow"></div>
+        <div className="absolute bottom-20 left-20 w-60 h-60 border border-taupe/20 rounded-full opacity-30"></div>
       </section>
     </div>
   );

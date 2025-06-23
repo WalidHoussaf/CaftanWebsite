@@ -5,11 +5,11 @@ import Image from 'next/image';
 const testimonials = [
   {
     id: 1,
-    name: "Zineb Lahbib",
+    name: "Hajar Lahbib",
     location: "Mohammedia, Morocco",
     date: "June 2025",
     rating: 5,
-    image: "/images/testimonials/zineb.jpg",
+    image: "/images/testimonials/hajar.jpg",
     text: "I ordered a caftan for my sister's wedding and was amazed by the quality and details. The embroidery is beautiful and the colors exactly as in the photos.",
     gradient: "from-navy/70 via-[#E6C200]/50 to-navy/30"
   },

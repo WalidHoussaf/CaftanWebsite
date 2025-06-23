@@ -2,7 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 
-const ZelligePattern = () => {
+interface ZelligePatternProps {
+  color?: string;
+}
+
+const ZelligePattern = ({ color = '#183661' }: ZelligePatternProps) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -37,7 +41,7 @@ const ZelligePattern = () => {
               <path 
                 key={`petal-${i}`}
                 d={`M 0 0 L ${35 * Math.cos(i * Math.PI / 6)} ${35 * Math.sin(i * Math.PI / 6)} L ${40 * Math.cos((i + 0.5) * Math.PI / 6)} ${40 * Math.sin((i + 0.5) * Math.PI / 6)} L ${35 * Math.cos((i + 1) * Math.PI / 6)} ${35 * Math.sin((i + 1) * Math.PI / 6)} Z`}
-                fill="#183661"
+                fill={color}
                 stroke="#FFFFFF"
                 strokeWidth="0.5"
               />
@@ -57,13 +61,13 @@ const ZelligePattern = () => {
             {/* Central black circle */}
             <circle cx="0" cy="0" r="15" fill="#222222" />
             <circle cx="0" cy="0" r="10" fill="#E6C200" strokeWidth="0.5" stroke="#FFFFFF" />
-            <circle cx="0" cy="0" r="5" fill="#183661" />
+            <circle cx="0" cy="0" r="5" fill={color} />
             
             {/* Outer pattern elements */}
             {[...Array(8)].map((_, i) => (
               <g key={`outer-${i}`} transform={`rotate(${i * 45})`}>
                 <path d={`M 45 0 L 55 -5 L 65 0 L 55 5 Z`} fill="#E6C200" stroke="#FFFFFF" strokeWidth="0.3" />
-                <path d={`M 70 0 L 75 -8 L 85 0 L 75 8 Z`} fill="#183661" stroke="#FFFFFF" strokeWidth="0.3" />
+                <path d={`M 70 0 L 75 -8 L 85 0 L 75 8 Z`} fill={color} stroke="#FFFFFF" strokeWidth="0.3" />
               </g>
             ))}
           </g>
@@ -74,7 +78,7 @@ const ZelligePattern = () => {
               <path 
                 key={`border-${i}`}
                 d={`M ${100 + 95 * Math.cos(i * Math.PI / 12)} ${100 + 95 * Math.sin(i * Math.PI / 12)} L ${100 + 95 * Math.cos((i + 0.7) * Math.PI / 12)} ${100 + 95 * Math.sin((i + 0.7) * Math.PI / 12)} L ${100 + 85 * Math.cos((i + 0.5) * Math.PI / 12)} ${100 + 85 * Math.sin((i + 0.5) * Math.PI / 12)} Z`}
-                fill={i % 4 === 0 ? "#E6C200" : (i % 4 === 1 ? "#183661" : (i % 4 === 2 ? "#22A45D" : "#B2A59B"))}
+                fill={i % 4 === 0 ? "#E6C200" : (i % 4 === 1 ? color : (i % 4 === 2 ? "#22A45D" : "#B2A59B"))}
                 stroke="#FFFFFF"
                 strokeWidth="0.5"
               />

@@ -120,11 +120,16 @@ export default function CollectionsPage() {
       {/* Hero section */}
       <div className="relative h-80 bg-navy/90 overflow-hidden mb-12">
         <div className="container-custom h-full flex flex-col justify-center">
-          <h1 className="text-4xl md:text-5xl font-serif text-cream mb-4">Our Collections</h1>
-          <p className="text-cream/80 max-w-2xl">
-            Discover our exquisite collections of traditional Moroccan garments, 
-            meticulously crafted with authentic techniques and premium materials.
-          </p>
+          <div className="max-w-4xl mx-auto mb-16 text-center">
+            <div className="inline-block mb-6 relative">
+              <span className="font-serif text-2xl text-cream/90 relative z-10">Our Collections</span>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
+            </div>
+            <p className="text-cream/80 max-w-2xl mx-auto">
+              Discover our exquisite collections of traditional Moroccan garments, 
+              meticulously crafted with authentic techniques and premium materials.
+            </p>
+          </div>
         </div>
         {/* Decorative elements */}
         <div className="absolute bottom-0 right-0 w-full h-12 bg-gradient-to-t from-cream to-transparent"></div>

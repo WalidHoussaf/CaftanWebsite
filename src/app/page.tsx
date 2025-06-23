@@ -2,7 +2,7 @@
 
 import Hero from '@/components/home/Hero';
 import Collections from '@/components/home/Collections';
-import FeaturedProducts from '@/components/FeaturedProducts';
+import FeaturedProducts from '@/components/home/FeaturedProducts';
 import Craftsmanship from '@/components/home/Craftsmanship';
 import Testimonials from '@/components/home/Testimonials';
 import Newsletter from '@/components/home/Newsletter';

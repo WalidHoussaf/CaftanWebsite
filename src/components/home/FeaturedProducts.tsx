@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import ProductCard from './ProductCard';
-import { productsData } from './ClientProductsData';
+import ProductCard from '../ProductCard';
+import { productsData } from '../ClientProductsData';
 
 interface FeaturedProductsProps {
   category: 'caftan' | 'jellaba';
