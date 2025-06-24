@@ -42,6 +42,7 @@ export interface ProductType {
   stock: number;
   reviews?: ReviewType[];
   averageRating?: number;
+  createdAt?: string;  // ISO date string for when the product was created
   details?: {
     fabricDetails?: string;
     careInstructions?: string;

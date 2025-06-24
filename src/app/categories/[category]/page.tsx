@@ -1,6 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import CategoryProducts from '../../../components/CategoryProducts';
 import { notFound } from 'next/navigation';
 import { CategoryType } from '../../../types/product';
@@ -29,7 +27,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       title: 'Caftans',
       subtitle: 'A Legacy of Luxury',
       description: 'Discover our exclusive collection of traditional Moroccan caftans, perfect for special occasions, weddings and ceremonies. Each piece is meticulously crafted with high-quality materials and exquisite handmade embroidery.',
-      banner: '/images/banners/caftan-banner.jpg',
+      headerBg: 'bg-[#8B4513]',
+      mainBg: 'from-[#FFF8E7] to-[#FFF1DC]',
       features: [
         { title: 'Handcrafted Excellence', description: 'Each piece is meticulously crafted by skilled artisans' },
         { title: 'Premium Materials', description: 'Finest silks, velvets, and premium fabrics' },
@@ -41,7 +40,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       title: 'Jellabas',
       subtitle: 'Timeless Tradition',
       description: 'Explore our selection of authentic Moroccan jellabas, combining comfort and elegance. Ideal for everyday wear or special occasions such as Ramadan, our jellabas are made with quality fabrics and traditional craftsmanship.',
-      banner: '/images/banners/jellaba-banner.jpg',
+      headerBg: 'bg-[#2D4F2B]',
+      mainBg: 'from-[#F0F5F0] to-[#E8F0E8]',
       features: [
         { title: 'Comfort First', description: 'Designed for everyday comfort and style' },
         { title: 'Quality Fabrics', description: 'Breathable materials for all seasons' },
@@ -51,12 +51,12 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     },
   };
 
-  const { title, subtitle, description, banner, features } = categoryInfo[categoryParam];
+  const { title, subtitle, description, headerBg, mainBg, features } = categoryInfo[categoryParam];
 
   return (
-    <div className="bg-gradient-to-b from-cream to-white">
+    <div className={`bg-gradient-to-b ${mainBg}`}>
       {/* Category Header - Clean Design */}
-      <section className="relative w-full bg-[#2D4F2B] pt-40 pb-20">
+      <section className={`relative w-full ${headerBg} pt-40 pb-20`}>
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto px-6">
             <span className="uppercase tracking-widest text-xl text-[#FFF1CA] mb-6 block font-light">
@@ -83,10 +83,10 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto mb-16 text-center">
             <div className="inline-block mb-6 relative">
-              <span className="font-serif text-2xl text-navy/70 relative z-10">About the Collection</span>
+              <span className="font-serif text-3xl text-navy/70 relative z-10">About the Collection</span>
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
             </div>
-            <p className="text-navy/80 text-lg leading-relaxed">{description}</p>
+            <p className="text-navy/80 text-lg leading-relaxed text-center mx-auto">{description}</p>
           </div>
 
           {/* Features Grid */}
@@ -96,8 +96,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 key={index} 
                 className="p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-taupe/10 hover:border-[#E6C200]/20 transition-all duration-300"
               >
-                <h3 className="font-serif text-xl text-navy mb-3">{feature.title}</h3>
-                <p className="text-navy/70">{feature.description}</p>
+                <h3 className="font-serif text-xl text-navy mb-3 text-center">{feature.title}</h3>
+                <p className="text-navy/70 text-center">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -109,7 +109,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <div className="container-custom">
           <div className="flex flex-wrap items-center justify-between mb-12">
             <div className="inline-block mb-6 relative">
-              <span className="font-serif text-2xl text-navy/70 relative z-10">Browse Collection</span>
+              <span className="font-serif text-2xl font-light text-navy/70 relative z-10">Browse Collection</span>
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
             </div>
           </div>

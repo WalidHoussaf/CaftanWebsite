@@ -22,6 +22,7 @@ export const productsData: ProductType[] = [
     isNew: false,
     stock: 12,
     averageRating: 4.8,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "100% soie avec broderies dorées à la main",
       designFeatures: ["Col rond", "Manches longues", "Ceinture assortie", "Broderies dorées"],
@@ -48,6 +49,7 @@ export const productsData: ProductType[] = [
     isNew: true,
     stock: 8,
     averageRating: 5.0,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "Velours premium avec broderies de perles et fils d'argent",
       designFeatures: ["Col V", "Manches trois-quarts", "Doublure en satin", "Ceinture incrustée de pierres"],
@@ -74,6 +76,7 @@ export const productsData: ProductType[] = [
     isNew: false,
     stock: 5,
     averageRating: 4.6,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "Mélange de coton et soie avec broderies artisanales berbères",
       designFeatures: ["Col bateau", "Manches larges", "Motifs berbères authentiques"],
@@ -100,6 +103,7 @@ export const productsData: ProductType[] = [
     isNew: true,
     stock: 15,
     averageRating: 4.7,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "Mousseline de soie avec broderies florales délicates",
       designFeatures: ["Col en V", "Manches évasées", "Ceinture fine", "Doublure en satin"],
@@ -126,6 +130,7 @@ export const productsData: ProductType[] = [
     isNew: false,
     stock: 7,
     averageRating: 4.9,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "Velours premium avec broderies dorées et cristaux",
       designFeatures: ["Col montant", "Manches longues", "Ceinture ornée de strass", "Finitions dorées"],
@@ -154,6 +159,7 @@ export const productsData: ProductType[] = [
     isNew: false,
     stock: 20,
     averageRating: 4.5,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "Coton 100% avec finitions artisanales",
       designFeatures: ["Capuche doublée", "Poches latérales discrètes", "Coupe décontractée"],
@@ -180,6 +186,7 @@ export const productsData: ProductType[] = [
     isNew: true,
     stock: 15,
     averageRating: 4.7,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "Laine fine mélangée avec broderies traditionnelles",
       designFeatures: ["Capuche ample", "Manchettes brodées", "Finitions à la main"],
@@ -206,6 +213,7 @@ export const productsData: ProductType[] = [
     isNew: false,
     stock: 18,
     averageRating: 4.6,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "Coton léger de haute qualité avec broderies contrastées",
       designFeatures: ["Capuche classique", "Poches dissimulées", "Broderies géométriques"],
@@ -232,6 +240,7 @@ export const productsData: ProductType[] = [
     isNew: true,
     stock: 25,
     averageRating: 4.4,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "Mélange de lin et coton respirant",
       designFeatures: ["Capuche ajustable", "Manches raglan", "Poches latérales"],
@@ -258,6 +267,7 @@ export const productsData: ProductType[] = [
     isNew: false,
     stock: 10,
     averageRating: 4.8,
+    createdAt: "2024-01-15",
     details: {
       fabricDetails: "Coton égyptien de haute qualité avec broderies multicolores",
       designFeatures: ["Capuche brodée", "Manches évasées", "Passepoils colorés"],

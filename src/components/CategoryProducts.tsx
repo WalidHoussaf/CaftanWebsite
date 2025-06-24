@@ -20,6 +20,20 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
   const [showFilters, setShowFilters] = useState(false);
   const [showSortOptions, setShowSortOptions] = useState(false);
   
+  // Add click outside handler
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.filter-dropdown') && !target.closest('.sort-dropdown')) {
+        setShowFilters(false);
+        setShowSortOptions(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+  
   // Get all products of this category
   const categoryProducts = productsData.filter((product: ProductType) => product.category === category);
   
@@ -62,16 +76,30 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sortOption) {
       case 'price-low-high':
-        return a.price - b.price;
+        return (a.price || 0) - (b.price || 0);
       case 'price-high-low':
-        return b.price - a.price;
+        return (b.price || 0) - (a.price || 0);
       case 'newest':
-        return a.isNew === b.isNew ? 0 : a.isNew ? -1 : 1;
+        // If no createdAt, fallback to isNew flag
+        if (!a.createdAt && !b.createdAt) {
+          return (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0);
+        }
+        return new Date(b.createdAt || '2000-01-01').getTime() - new Date(a.createdAt || '2000-01-01').getTime();
       case 'rating':
-        return (b.averageRating || 0) - (a.averageRating || 0);
+        // Sort by average rating first, then by number of reviews
+        const ratingDiff = (b.averageRating || 0) - (a.averageRating || 0);
+        if (ratingDiff !== 0) return ratingDiff;
+        return (b.reviews?.length || 0) - (a.reviews?.length || 0);
       case 'featured':
       default:
-        return a.isFeatured === b.isFeatured ? 0 : a.isFeatured ? -1 : 1;
+        // Sort by featured status first, then by newest, then by rating
+        if (a.isFeatured !== b.isFeatured) {
+          return a.isFeatured ? -1 : 1;
+        }
+        if (a.isNew !== b.isNew) {
+          return a.isNew ? -1 : 1;
+        }
+        return (b.averageRating || 0) - (a.averageRating || 0);
     }
   });
   
@@ -129,7 +157,7 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
         
         <div className="flex items-center space-x-6">
           {/* Filter Button */}
-          <div className="relative">
+          <div className="relative filter-dropdown z-50">
             <button 
               onClick={() => {
                 setShowFilters(!showFilters);
@@ -143,7 +171,7 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
             
             {/* Filter Dropdown */}
             {showFilters && (
-              <div className="absolute right-0 mt-2 w-72 bg-cream shadow-lg rounded-md border border-taupe/10 z-30">
+              <div className="absolute right-0 mt-2 w-72 bg-cream shadow-lg rounded-md border border-taupe/10 z-50">
                 <div className="p-4">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="font-medium text-navy">Filters</h3>
@@ -251,13 +279,14 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
           </div>
           
           {/* Sort Button */}
-          <div className="relative">
+          <div className="relative sort-dropdown z-50">
             <button 
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setShowSortOptions(!showSortOptions);
                 setShowFilters(false);
               }}
-              className="flex items-center space-x-2 text-navy/70 hover:text-navy transition-colors"
+              className="flex items-center space-x-2 text-navy/70 hover:text-navy transition-colors cursor-pointer"
             >
               <span className="uppercase tracking-widest text-xs">Sort</span>
               <ChevronDownIcon className={`h-4 w-4 transition-transform ${showSortOptions ? 'rotate-180' : ''}`} />
@@ -265,7 +294,7 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
             
             {/* Sort Dropdown */}
             {showSortOptions && (
-              <div className="absolute right-0 mt-2 w-48 bg-cream shadow-lg rounded-md border border-taupe/10 z-30">
+              <div className="absolute right-0 mt-2 w-48 bg-cream shadow-lg rounded-md border border-taupe/10 z-50">
                 <div className="py-2">
                   {[
                     { value: 'featured', label: 'Featured' },

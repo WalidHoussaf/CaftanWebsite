@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Bars3Icon, XMarkIcon, ShoppingBagIcon, HeartIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useCartStore } from '@/store/cartStore';
 import { useWishlistStore } from '@/store/wishlistStore';
 
@@ -60,12 +60,13 @@ export default function Header() {
             <Link href="/" className="relative group block">
               <div className="flex items-center">
                 {/* Logo Image */}
-                <div className="relative w-16 h-16 mr-2">
+                <div className="relative w-14 h-14 mr-2">
                   <Image 
-                    src="/images/logocaftan.jpg.png"
+                    src="/images/logo.png"
                     alt="Konoz Khadija Logo"
                     fill
-                    sizes="4rem"
+                    sizes="(max-width: 768px) 48px, 56px"
+                    quality={100}
                     className="object-contain transition-transform duration-300 group-hover:scale-105 rounded-lg"
                     priority
                   />
