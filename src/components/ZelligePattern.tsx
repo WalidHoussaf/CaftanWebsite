@@ -4,9 +4,10 @@ import React, { useEffect, useState } from 'react';
 
 interface ZelligePatternProps {
   color?: string;
+  className?: string;
 }
 
-const ZelligePattern = ({ color = '#183661' }: ZelligePatternProps) => {
+const ZelligePattern = ({ color = '#183661', className = '' }: ZelligePatternProps) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const ZelligePattern = ({ color = '#183661' }: ZelligePatternProps) => {
   // Render a placeholder during SSR and initial client render to prevent hydration mismatch
   if (!isClient) {
     return (
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] opacity-50 pointer-events-none z-10 overflow-hidden">
+      <div className={`absolute bottom-0 right-0 w-[400px] h-[400px] opacity-50 pointer-events-none z-10 overflow-hidden ${className}`}>
         <div className="relative w-[600px] h-[600px] translate-x-[100px] translate-y-[100px]">
           {/* Empty placeholder to maintain layout */}
         </div>
@@ -25,7 +26,7 @@ const ZelligePattern = ({ color = '#183661' }: ZelligePatternProps) => {
   }
 
   return (
-    <div className="absolute bottom-0 right-0 w-[400px] h-[400px] opacity-50 pointer-events-none z-10 overflow-hidden">
+    <div className={`absolute bottom-0 right-0 w-[400px] h-[400px] opacity-50 pointer-events-none z-10 overflow-hidden ${className}`}>
       <div className="relative w-[600px] h-[600px] translate-x-[100px] translate-y-[100px]">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
           {/* Background circle */}

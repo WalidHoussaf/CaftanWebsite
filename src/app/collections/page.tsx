@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { productsData } from '@/data/products';
-import { ProductType, SizeType } from '@/types/product';
+import { ProductType, SizeType, CategoryType } from '@/types/product';
 import { AdjustmentsHorizontalIcon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import ProductCardComponent from '@/components/ProductCard';
 
 interface CategoryOption {
   id: string;
@@ -215,6 +216,24 @@ export default function CollectionsPage() {
     <div className="min-h-screen bg-gradient-to-b from-cream to-white">
       {/* Enhanced Hero Section */}
       <section className="relative h-[70vh] min-h-[600px] bg-[#B22222] overflow-hidden">
+        {/* Decorative stripes */}
+        <div className="absolute bottom-0 right-0 w-full h-full">
+          {[1, 2, 3, 4].map((index) => (
+            <div
+              key={index}
+              style={{
+                position: 'absolute',
+                bottom: '-100%',
+                right: `${index * 60}px`,
+                width: '2px',
+                height: '1200px',
+                backgroundColor: '#FFB823',
+                transform: 'rotate(45deg)',
+                opacity: 0.9 - index * 0.15
+              }}
+            />
+          ))}
+        </div>
         {/* Animated Overlay */}
         <div className="absolute inset-0 bg-[#1B2A4E]/30" />
         {/* Content */}
@@ -262,13 +281,12 @@ export default function CollectionsPage() {
                 key={collection.id}
                 onClick={() => {
                   setActiveCollection(collection.id);
-                  // Smooth scroll to preview section
                   document.getElementById('preview-section')?.scrollIntoView({ 
                     behavior: 'smooth',
                     block: 'start'
                   });
                 }}
-                className={`group relative overflow-hidden rounded-xl transition-all duration-300 transform hover:-translate-y-1 ${
+                className={`group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-taupe/10 ${
                   activeCollection === collection.id
                     ? 'ring-4 ring-navy/20 scale-[1.02]'
                     : ''
@@ -276,21 +294,54 @@ export default function CollectionsPage() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="aspect-[4/5] relative">
+                  {/* Overlay with gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-noir/90 via-noir/40 to-transparent z-10 group-hover:opacity-90 transition-opacity duration-500"></div>
+                  
+                  {/* Decorative corner elements */}
+                  <div className="absolute top-4 left-4 w-10 h-10 border-t-2 border-l-2 border-cream/30 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100"></div>
+                  <div className="absolute bottom-4 right-4 w-10 h-10 border-b-2 border-r-2 border-cream/30 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100"></div>
+                  
+                  {/* Decorative side line */}
+                  <div className="absolute left-0 top-1/4 bottom-1/4 w-1 bg-gradient-to-b from-transparent via-[#E6C200]/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300"></div>
+
+                  {/* Background fill for empty space */}
+                  <div className="absolute inset-0 bg-[#f0ede5]"></div>
+
                   {collection.image && (
-                    <Image
-                      src={collection.image}
-                      alt={collection.name}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105 brightness-100 contrast-100"
-                      quality={100}
-                      priority={index < 3}
-                    />
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={collection.image}
+                        alt={collection.name}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        quality={95}
+                        priority={index < 3}
+                      />
+                      {/* Subtle radial gradient overlay */}
+                      <div className="absolute inset-0 bg-radial-subtle opacity-30 mix-blend-overlay pointer-events-none"></div>
+                    </div>
                   )}
                   
-                  <div className="absolute inset-0 flex flex-col justify-end p-6">
-                    <div className="text-center">
-                      <h3 className="text-2xl font-serif text-[#FFF1CA] uppercase mb-3">{collection.name}</h3>
-                      <p className="text-sm text-[#FFF1CA]/90 uppercase tracking-wider">{collection.description}</p>
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-end z-20 p-8">
+                    <div className="text-center transform transition-all duration-500 group-hover:translate-y-0 translate-y-4">
+                      {/* Decorative element */}
+                      <div className="w-20 h-px bg-gradient-to-r from-transparent via-cream to-transparent mx-auto mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></div>
+                      
+                      {/* Decorative Moroccan symbol */}
+                      <div className="w-12 h-12 mx-auto mb-4 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200">
+                        <svg viewBox="0 0 24 24" className="w-full h-full text-[#E6C200]/70">
+                          <path d="M12,2 L22,12 L12,22 L2,12 Z" fill="none" stroke="currentColor" strokeWidth="0.6" />
+                          <path d="M12,5 L19,12 L12,19 L5,12 Z" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                          <path d="M12,8 L16,12 L12,16 L8,12 Z" fill="none" stroke="currentColor" strokeWidth="0.4" />
+                          <circle cx="12" cy="12" r="2" fill="none" stroke="currentColor" strokeWidth="0.3" />
+                        </svg>
+                      </div>
+
+                      <h3 className="font-serif text-3xl text-cream mb-4">{collection.name}</h3>
+                      <p className="text-cream/90 max-w-xs mx-auto opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 text-sm tracking-wider uppercase">
+                        {collection.description}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -324,8 +375,8 @@ export default function CollectionsPage() {
 
               {/* Filter Panel */}
               {showFilters && (
-                <div className="absolute left-0 mt-2 w-72 bg-cream shadow-lg rounded-md border border-taupe/10">
-                  <div className="p-4">
+                <div className="absolute left-0 mt-2 w-[90vw] max-w-3xl bg-cream shadow-lg rounded-md border border-taupe/10">
+                  <div className="p-6">
                     <div className="flex justify-between items-center mb-4">
                       <h3 className="font-medium text-navy">Filters</h3>
                       <button 
@@ -336,15 +387,16 @@ export default function CollectionsPage() {
                       </button>
                     </div>
 
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Categories */}
-                    <div className="mb-6">
+                      <div>
                       <h4 className="text-sm font-medium text-navy mb-3">Categories</h4>
-                      <div className="space-y-2">
+                        <div className="flex flex-wrap gap-2">
                         {filterOptions.categories.map(category => (
                           <button
                             key={category.id}
                             onClick={() => handleFilterChange('category', category.id)}
-                            className={`flex items-center w-full text-left px-3 py-2 rounded-lg transition-colors ${
+                              className={`flex items-center px-4 py-2 rounded-lg transition-colors ${
                               filters.category === category.id
                                 ? 'bg-navy/5 text-navy'
                                 : 'text-navy/70 hover:bg-navy/5'
@@ -359,44 +411,46 @@ export default function CollectionsPage() {
                                 className="mr-3"
                               />
                             )}
-                            <span className="text-sm">{category.name}</span>
+                              <span className="text-sm whitespace-nowrap">{category.name}</span>
                           </button>
                         ))}
                       </div>
                     </div>
 
                     {/* Price Ranges */}
-                    <div className="mb-6">
+                      <div>
                       <h4 className="text-sm font-medium text-navy mb-3">Price Range</h4>
-                      <div className="space-y-2">
+                        <div className="flex flex-wrap gap-2">
                         {filterOptions.priceRanges.map(range => (
                           <button
                             key={range.id}
                             onClick={() => handleFilterChange('priceRange', range.id)}
-                            className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
+                              className={`px-4 py-2 rounded-lg transition-colors ${
                               filters.priceRange === range.id
                                 ? 'bg-navy/5 text-navy'
                                 : 'text-navy/70 hover:bg-navy/5'
                             }`}
                           >
-                            <span className="text-sm">{range.name}</span>
+                              <div className="flex flex-col items-start">
+                                <span className="text-sm whitespace-nowrap">{range.name}</span>
                             {range.label && (
-                              <span className="ml-2 text-xs text-navy/50">{range.label}</span>
+                                  <span className="text-xs text-navy/50">{range.label}</span>
                             )}
+                              </div>
                           </button>
                         ))}
                       </div>
                     </div>
 
                     {/* Sizes */}
-                    <div className="mb-6">
+                      <div>
                       <h4 className="text-sm font-medium text-navy mb-3">Sizes</h4>
                       <div className="flex flex-wrap gap-2">
                         {filterOptions.sizes.map(size => (
                           <button
                             key={size.id}
                             onClick={() => handleSizeToggle(size.id)}
-                            className={`px-3 py-1 text-sm border rounded-lg transition-colors ${
+                              className={`px-4 py-2 text-sm border rounded-lg transition-colors ${
                               filters.sizes.includes(size.id)
                                 ? 'bg-navy text-cream border-navy'
                                 : 'bg-cream text-navy border-taupe/30 hover:border-navy'
@@ -405,17 +459,20 @@ export default function CollectionsPage() {
                             {size.name}
                           </button>
                         ))}
+                        </div>
                       </div>
                     </div>
 
                     {/* Reset Filters */}
                     {isAnyFilterActive() && (
+                      <div className="mt-6 flex justify-end">
                       <button
                         onClick={resetFilters}
-                        className="w-full py-2 text-sm text-navy/70 hover:text-navy border border-taupe/30 rounded-lg transition-colors"
+                          className="px-6 py-2 text-sm text-navy/70 hover:text-navy border border-taupe/30 rounded-lg transition-colors"
                       >
                         Reset All Filters
                       </button>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -527,11 +584,10 @@ export default function CollectionsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {sortedProducts.map((product, index) => (
-              <ProductCard 
+            {sortedProducts.map((product) => (
+              <ProductCardComponent 
                 key={product.id} 
                 product={product}
-                style={{ animationDelay: `${index * 0.1}s` }}
               />
             ))}
           </div>
@@ -562,12 +618,11 @@ export default function CollectionsPage() {
 }
 
 // Enhanced Product Card Component
-function ProductCard({ product, style }: { product: ProductType; style?: React.CSSProperties }) {
+function ProductCard({ product }: { product: ProductType }) {
   return (
     <Link 
       href={`/product/${product.id}`}
       className="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-fade-in-up"
-      style={style}
     >
       <div className="relative aspect-[3/4]">
         <Image

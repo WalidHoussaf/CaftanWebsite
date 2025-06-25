@@ -41,7 +41,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       subtitle: 'Timeless Tradition',
       description: 'Explore our selection of authentic Moroccan jellabas, combining comfort and elegance. Ideal for everyday wear or special occasions such as Ramadan, our jellabas are made with quality fabrics and traditional craftsmanship.',
       headerBg: 'bg-[#2D4F2B]',
-      mainBg: 'from-[#F0F5F0] to-[#E8F0E8]',
+      mainBg: 'from-[#FFF8E7] to-[#FFF1DC]',
       features: [
         { title: 'Comfort First', description: 'Designed for everyday comfort and style' },
         { title: 'Quality Fabrics', description: 'Breathable materials for all seasons' },
@@ -56,7 +56,25 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   return (
     <div className={`bg-gradient-to-b ${mainBg}`}>
       {/* Category Header - Clean Design */}
-      <section className={`relative w-full ${headerBg} pt-40 pb-20`}>
+      <section className={`relative w-full ${headerBg} pt-40 pb-20 overflow-hidden`}>
+        {/* Decorative stripes */}
+        <div className="absolute bottom-0 right-0 w-full h-full">
+          {[1, 2, 3, 4].map((index) => (
+            <div
+              key={index}
+              style={{
+                position: 'absolute',
+                bottom: '-120%',
+                right: `${index * 60}px`,
+                width: '2px',
+                height: '1200px',
+                backgroundColor: '#FFB823',
+                transform: 'rotate(45deg)',
+                opacity: 0.9 - index * 0.15
+              }}
+            />
+          ))}
+        </div>
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto px-6">
             <span className="uppercase tracking-widest text-xl text-[#FFF1CA] mb-6 block font-light">
@@ -94,10 +112,15 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-taupe/10 hover:border-[#E6C200]/20 transition-all duration-300"
+                className="group p-6 rounded-lg bg-white/50 backdrop-blur-sm border border-taupe/10 hover:border-[#E6C200]/20 transition-all duration-500 hover:shadow-lg hover:shadow-[#E6C200]/5 hover:-translate-y-1 relative overflow-hidden"
               >
-                <h3 className="font-serif text-xl text-navy mb-3 text-center">{feature.title}</h3>
-                <p className="text-navy/70 text-center">{feature.description}</p>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#E6C200]/30 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-xl text-navy mb-3 text-center transform group-hover:scale-105 transition-transform duration-500">{feature.title}</h3>
+                  <p className="text-navy/70 text-center group-hover:text-navy/90 transition-colors duration-500">{feature.description}</p>
+                </div>
+                <div className="absolute top-0 left-0 w-full h-full border-2 border-[#E6C200]/0 group-hover:border-[#E6C200]/5 rounded-lg transition-all duration-500 scale-90 group-hover:scale-100"></div>
               </div>
             ))}
           </div>

@@ -46,7 +46,7 @@ export default function Hero() {
             <div className="absolute inset-0 border-2 border-transparent hover:border-cream/20 transition-all duration-700 z-10"></div>
             
             <Image 
-              src="/images/caftans/caftan1.jpg"
+              src="/images/hero.jpg"
               alt="Moroccan caftan collection - model in red caftan"
               width={600}
               height={782}
