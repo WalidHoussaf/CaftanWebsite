@@ -8,7 +8,7 @@ export type OccasionType =
   | 'soirée';
 
 // Types de tailles disponibles
-export type SizeType = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
+export type SizeType = 'xs' | 's' | 'm' | 'l' | 'xl' | 'custom';
 
 // Types de catégories
 export type CategoryType = 'caftan' | 'jellaba';
@@ -29,19 +29,19 @@ export interface ProductType {
   name: string;
   description: string;
   price: number;
-  oldPrice: number | null;
+  oldPrice?: number;
   category: CategoryType;
   images: string[];
-  colors: string[];
+  colors?: string[];
   sizes: SizeType[];
-  material: string;
-  occasions: OccasionType[];
+  stock: number;
   isAvailable: boolean;
   isFeatured?: boolean;
   isNew?: boolean;
-  stock: number;
-  reviews?: ReviewType[];
+  material?: string;
+  occasions?: string[];
   averageRating?: number;
+  reviews?: ReviewType[];
   createdAt?: string;  // ISO date string for when the product was created
   details?: {
     fabricDetails?: string;

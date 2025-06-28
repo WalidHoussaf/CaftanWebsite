@@ -187,7 +187,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <button 
               onClick={() => {
                 const { addItem } = useCartStore.getState();
-                addItem(product, product.colors?.[0] || '', product.sizes?.[0] || '', 1);
+                addItem(product, '', product.sizes?.[0] || '', 1);
                 toast.success(`${product.name} added to your cart!`, {
                   style: {
                     border: '1px solid #713200',
@@ -217,41 +217,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             </span>
           )}
         </div>
-        
-        {/* Available Colors */}
-        {product.colors && product.colors.length > 0 && (
-          <div className="mt-3 flex items-center group">
-            <span className="text-xs uppercase tracking-wider text-navy/60 mr-3">Colors</span>
-            <div className="flex items-center space-x-2">
-              {product.colors.slice(0, 3).map((color, index) => (
-                <div
-                  key={index}
-                  className="relative group/color"
-                >
-                  <div
-                    className="w-4 h-4 rounded-full border-2 border-cream shadow-sm transform transition-all duration-300 hover:scale-110 cursor-pointer"
-                    style={{ backgroundColor: color }}
-                  />
-                  {/* Color name tooltip - Adjusted position */}
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-navy/90 text-cream text-xs py-1 px-2 rounded opacity-0 group-hover/color:opacity-100 whitespace-nowrap pointer-events-none transition-opacity duration-200 z-10">
-                    {getColorName(color)}
-                  </div>
-                </div>
-              ))}
-              {product.colors.length > 3 && (
-                <div className="relative group/more">
-                  <div className="w-4 h-4 rounded-full bg-cream border-2 border-navy/20 flex items-center justify-center text-[10px] text-navy/70 cursor-pointer transform transition-all duration-300 hover:scale-110">
-                    +{product.colors.length - 3}
-                  </div>
-                  {/* More colors tooltip - Adjusted position */}
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-navy/90 text-cream text-xs py-1 px-2 rounded opacity-0 group-hover/more:opacity-100 whitespace-nowrap pointer-events-none transition-opacity duration-200 z-10">
-                    {product.colors.slice(3).map(color => getColorName(color)).join(', ')}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
         
         {/* Decorative line */}
         <div className="mt-3 w-1/4 h-px bg-gradient-to-r from-[#E6C200]/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>

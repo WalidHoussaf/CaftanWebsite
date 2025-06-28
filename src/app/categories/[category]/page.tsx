@@ -77,17 +77,21 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </div>
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto px-6">
-            <span className="uppercase tracking-widest text-xl text-[#FFF1CA] mb-6 block font-light">
+            <span className="uppercase tracking-widest text-xl text-[#FFF1CA] mb-6 block font-light opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards]">
               Our Collection
             </span>
             <div className="inline-block mb-6 relative">
-              <h1 className="font-serif text-4xl md:text-6xl font-semibold bg-gradient-to-r from-[#FFF1CA] to-[#FFB823] bg-clip-text text-transparent mb-6 relative z-10">{title}</h1>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-[#FFB823] to-transparent"></div>
+              <h1 className="font-serif text-4xl md:text-6xl font-semibold bg-gradient-to-r from-[#FFF1CA] to-[#FFB823] bg-clip-text text-transparent mb-6 relative z-10 opacity-0 animate-[fadeInUp_0.6s_ease-out_0.2s_forwards] transform translate-y-4">
+                {title}
+              </h1>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-transparent via-[#FFB823] to-transparent animate-[expandWidth_0.8s_ease-out_0.6s_forwards]"></div>
             </div>
-            <h2 className="font-serif text-lg md:text-xl text-[#FFF1CA] mb-8">{subtitle}</h2>
+            <h2 className="font-serif text-lg md:text-xl text-[#FFF1CA] mb-8 opacity-0 animate-[fadeInUp_0.6s_ease-out_0.4s_forwards] transform translate-y-4">
+              {subtitle}
+            </h2>
             
             {/* Decorative Elements */}
-            <div className="w-32 h-px mx-auto bg-gradient-to-r from-transparent via-[#E6C200]/30 to-transparent mt-8"></div>
+            <div className="w-32 h-px mx-auto bg-gradient-to-r from-transparent via-[#E6C200]/30 to-transparent mt-8 opacity-0 animate-[fadeIn_0.6s_ease-out_0.8s_forwards]"></div>
           </div>
         </div>
         
@@ -101,10 +105,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto mb-16 text-center">
             <div className="inline-block mb-6 relative">
-              <span className="font-serif text-3xl text-navy/70 relative z-10">About the Collection</span>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
+              <span className="font-serif text-3xl text-navy/70 relative z-10 opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards]">
+                About the Collection
+              </span>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent animate-[expandWidth_0.8s_ease-out_0.4s_forwards]"></div>
             </div>
-            <p className="text-navy/80 text-lg leading-relaxed text-center mx-auto">{description}</p>
+            <p className="text-navy/80 text-lg leading-relaxed text-center mx-auto opacity-0 animate-[fadeInUp_0.6s_ease-out_0.2s_forwards]">
+              {description}
+            </p>
           </div>
 
           {/* Features Grid */}

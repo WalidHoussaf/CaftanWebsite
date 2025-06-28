@@ -4,17 +4,37 @@ import React, { useState, useEffect } from 'react';
 import { productsData } from '../data/products';
 import ProductList from './ProductList';
 import { CategoryType, ProductType, OccasionType, SizeType } from '../types/product';
-import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { AdjustmentsHorizontalIcon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 interface CategoryProductsProps {
   category: CategoryType;
 }
 
+// Define filter options
+const filterOptions = {
+  priceRanges: [
+    { id: 'all', name: 'All Prices' },
+    { id: '0-150', name: 'Under €150', label: 'Budget Friendly' },
+    { id: '150-250', name: '€150 - €250', label: 'Mid Range' },
+    { id: '250-350', name: '€250 - €350', label: 'Premium' },
+    { id: '350+', name: 'Over €350', label: 'Luxury' },
+  ],
+  sizes: [
+    { id: 'XS' as SizeType, name: 'XS' },
+    { id: 'S' as SizeType, name: 'S' },
+    { id: 'M' as SizeType, name: 'M' },
+    { id: 'L' as SizeType, name: 'L' },
+    { id: 'XL' as SizeType, name: 'XL' },
+    { id: 'XXL' as SizeType, name: 'XXL' },
+    { id: 'XXXL' as SizeType, name: 'XXXL' },
+  ],
+};
+
 const CategoryProducts = ({ category }: CategoryProductsProps) => {
   // State for filters and sorting
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [selectedPriceRange, setSelectedPriceRange] = useState<string>('all');
   const [selectedOccasions, setSelectedOccasions] = useState<OccasionType[]>([]);
-  const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<SizeType[]>([]);
   const [sortOption, setSortOption] = useState<string>('featured');
   const [showFilters, setShowFilters] = useState(false);
@@ -37,39 +57,31 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
   // Get all products of this category
   const categoryProducts = productsData.filter((product: ProductType) => product.category === category);
   
-  // Get unique occasions, colors, and sizes for this category
+  // Get unique occasions for this category
   const allOccasions = Array.from(new Set(categoryProducts.flatMap(p => p.occasions || [])));
-  const allColors = Array.from(new Set(categoryProducts.flatMap(p => p.colors || [])));
-  const allSizes = Array.from(new Set(categoryProducts.flatMap(p => p.sizes || [])));
-  
-  // Get min and max prices for this category
-  const prices = categoryProducts.map(p => p.price);
-  const minPrice = Math.floor(Math.min(...prices));
-  const maxPrice = Math.ceil(Math.max(...prices));
-  
-  // Initialize price range based on category products
-  useEffect(() => {
-    setPriceRange([minPrice, maxPrice]);
-  }, [category, minPrice, maxPrice]);
   
   // Apply filters
   const filteredProducts = categoryProducts.filter((product) => {
-    // Price filter
-    const priceInRange = product.price >= priceRange[0] && product.price <= priceRange[1];
+    // Price range filter
+    if (selectedPriceRange !== 'all') {
+      const [min, max] = selectedPriceRange.split('-').map(Number);
+      if (max) {
+        if (product.price < min || product.price > max) return false;
+      } else {
+        // For '350+' case
+        if (product.price < min) return false;
+      }
+    }
     
     // Occasions filter
     const matchesOccasions = selectedOccasions.length === 0 || 
       selectedOccasions.some(occasion => product.occasions?.includes(occasion));
     
-    // Colors filter
-    const matchesColors = selectedColors.length === 0 || 
-      selectedColors.some(color => product.colors?.includes(color));
-    
     // Sizes filter
     const matchesSizes = selectedSizes.length === 0 || 
       selectedSizes.some(size => product.sizes?.includes(size));
     
-    return priceInRange && matchesOccasions && matchesColors && matchesSizes;
+    return matchesOccasions && matchesSizes;
   });
   
   // Apply sorting
@@ -80,19 +92,16 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
       case 'price-high-low':
         return (b.price || 0) - (a.price || 0);
       case 'newest':
-        // If no createdAt, fallback to isNew flag
         if (!a.createdAt && !b.createdAt) {
           return (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0);
         }
         return new Date(b.createdAt || '2000-01-01').getTime() - new Date(a.createdAt || '2000-01-01').getTime();
       case 'rating':
-        // Sort by average rating first, then by number of reviews
         const ratingDiff = (b.averageRating || 0) - (a.averageRating || 0);
         if (ratingDiff !== 0) return ratingDiff;
         return (b.reviews?.length || 0) - (a.reviews?.length || 0);
       case 'featured':
       default:
-        // Sort by featured status first, then by newest, then by rating
         if (a.isFeatured !== b.isFeatured) {
           return a.isFeatured ? -1 : 1;
         }
@@ -112,14 +121,6 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
     );
   };
   
-  const toggleColor = (color: string) => {
-    setSelectedColors(prev => 
-      prev.includes(color) 
-        ? prev.filter(c => c !== color)
-        : [...prev, color]
-    );
-  };
-  
   const toggleSize = (size: SizeType) => {
     setSelectedSizes(prev => 
       prev.includes(size) 
@@ -130,49 +131,46 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
   
   // Reset all filters
   const resetFilters = () => {
-    setPriceRange([minPrice, maxPrice]);
+    setSelectedPriceRange('all');
     setSelectedOccasions([]);
-    setSelectedColors([]);
     setSelectedSizes([]);
     setSortOption('featured');
   };
   
   // Check if any filters are active
   const hasActiveFilters = 
+    selectedPriceRange !== 'all' ||
     selectedOccasions.length > 0 || 
-    selectedColors.length > 0 || 
-    selectedSizes.length > 0 || 
-    priceRange[0] > minPrice || 
-    priceRange[1] < maxPrice;
+    selectedSizes.length > 0;
   
   return (
     <div>
       {/* Filter & Sort Controls */}
-      <div className="flex flex-wrap items-center justify-between mb-8 gap-4">
-        <div className="text-navy/80">
-          <span className="uppercase tracking-widest text-xs">
-            {sortedProducts.length} {sortedProducts.length === 1 ? 'item' : 'items'} found
-          </span>
-        </div>
-        
+      <div className="flex flex-wrap items-center gap-4 mb-8">
         <div className="flex items-center space-x-6">
           {/* Filter Button */}
           <div className="relative filter-dropdown z-50">
-            <button 
+            <button
               onClick={() => {
                 setShowFilters(!showFilters);
                 setShowSortOptions(false);
               }}
               className="flex items-center space-x-2 text-navy/70 hover:text-navy transition-colors"
             >
-              <span className="uppercase tracking-widest text-xs">Filter</span>
+              <AdjustmentsHorizontalIcon className="h-5 w-5" />
+              <span className="text-sm font-medium">Filters</span>
+              {hasActiveFilters && (
+                <span className="ml-2 bg-navy/10 text-navy text-xs px-2 py-0.5 rounded-full">
+                  Active
+                </span>
+              )}
               <ChevronDownIcon className={`h-4 w-4 transition-transform ${showFilters ? 'rotate-180' : ''}`} />
             </button>
             
             {/* Filter Dropdown */}
             {showFilters && (
-              <div className="absolute right-0 mt-2 w-72 bg-cream shadow-lg rounded-md border border-taupe/10 z-50">
-                <div className="p-4">
+              <div className="fixed left-4 right-4 md:absolute md:left-0 md:right-auto mt-2 w-[calc(100vw-2rem)] md:w-[90vw] max-w-3xl bg-cream shadow-lg rounded-md border border-taupe/10 z-50">
+                <div className="p-6">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="font-medium text-navy">Filters</h3>
                     <button 
@@ -182,103 +180,93 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
                       <XMarkIcon className="h-5 w-5" />
                     </button>
                   </div>
-                  
-                  {/* Price Range */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-medium text-navy mb-3">Price Range</h4>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs text-navy/70">${priceRange[0]}</span>
-                      <span className="text-xs text-navy/70">${priceRange[1]}</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={minPrice}
-                      max={maxPrice}
-                      value={priceRange[0]}
-                      onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
-                      className="w-full accent-navy mb-2"
-                    />
-                    <input
-                      type="range"
-                      min={minPrice}
-                      max={maxPrice}
-                      value={priceRange[1]}
-                      onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
-                      className="w-full accent-navy"
-                    />
-                  </div>
-                  
-                  {/* Occasions */}
-                  {allOccasions.length > 0 && (
-                    <div className="mb-6">
-                      <h4 className="text-sm font-medium text-navy mb-3">Occasions</h4>
-                      <div className="space-y-2">
-                        {allOccasions.map((occasion) => (
-                          <label key={occasion} className="flex items-center">
-                            <input
-                              type="checkbox"
-                              checked={selectedOccasions.includes(occasion)}
-                              onChange={() => toggleOccasion(occasion)}
-                              className="mr-2 accent-navy"
-                            />
-                            <span className="text-sm capitalize">{occasion}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Colors */}
-                  {allColors.length > 0 && (
-                    <div className="mb-6">
-                      <h4 className="text-sm font-medium text-navy mb-3">Colors</h4>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* Price Ranges */}
+                    <div>
+                      <h4 className="text-sm font-medium text-navy mb-3">Price Range</h4>
                       <div className="flex flex-wrap gap-2">
-                        {allColors.map((color) => (
+                        {filterOptions.priceRanges.map(range => (
                           <button
-                            key={color}
-                            onClick={() => toggleColor(color)}
-                            className={`w-6 h-6 rounded-full border ${selectedColors.includes(color) ? 'ring-2 ring-navy ring-offset-2' : 'border-gray-300'}`}
-                            style={{ backgroundColor: color }}
-                            aria-label={`Filter by color ${color}`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Sizes */}
-                  {allSizes.length > 0 && (
-                    <div className="mb-6">
-                      <h4 className="text-sm font-medium text-navy mb-3">Sizes</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {allSizes.map((size) => (
-                          <button
-                            key={size}
-                            onClick={() => toggleSize(size)}
-                            className={`px-3 py-1 text-xs border rounded-md transition-colors ${selectedSizes.includes(size) ? 'bg-navy text-cream border-navy' : 'bg-cream text-navy border-taupe/30 hover:border-navy'}`}
+                            key={range.id}
+                            onClick={() => setSelectedPriceRange(range.id)}
+                            className={`px-4 py-2 rounded-lg transition-colors ${
+                              selectedPriceRange === range.id
+                                ? 'bg-navy/5 text-navy'
+                                : 'text-navy/70 hover:bg-navy/5'
+                            }`}
                           >
-                            {size}
+                            <div className="flex flex-col items-start">
+                              <span className="text-sm whitespace-nowrap">{range.name}</span>
+                              {range.label && (
+                                <span className="text-xs text-navy/50">{range.label}</span>
+                              )}
+                            </div>
                           </button>
                         ))}
                       </div>
                     </div>
-                  )}
-                  
-                  {/* Reset Button */}
+
+                    {/* Occasions */}
+                    <div>
+                      <h4 className="text-sm font-medium text-navy mb-3">Occasions</h4>
+                      <div className="flex flex-col gap-2">
+                        {allOccasions.map(occasion => (
+                          <button
+                            key={occasion}
+                            onClick={() => toggleOccasion(occasion)}
+                            className={`px-4 py-2 rounded-lg transition-colors ${
+                              selectedOccasions.includes(occasion)
+                                ? 'bg-navy/5 text-navy'
+                                : 'text-navy/70 hover:bg-navy/5'
+                            }`}
+                          >
+                            <div className="flex flex-col items-start">
+                              <span className="text-sm capitalize">{occasion}</span>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Sizes */}
+                    <div>
+                      <h4 className="text-sm font-medium text-navy mb-3">Sizes</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {filterOptions.sizes.map(size => (
+                          <button
+                            key={size.id}
+                            onClick={() => toggleSize(size.id)}
+                            className={`px-4 py-2 text-sm border rounded-lg transition-colors ${
+                              selectedSizes.includes(size.id)
+                                ? 'bg-navy text-cream border-navy'
+                                : 'bg-cream text-navy border-taupe/30 hover:border-navy'
+                            }`}
+                          >
+                            {size.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Reset Filters */}
                   {hasActiveFilters && (
-                    <button
-                      onClick={resetFilters}
-                      className="w-full py-2 text-sm text-navy/70 hover:text-navy border border-taupe/30 rounded-md transition-colors mt-2"
-                    >
-                      Reset Filters
-                    </button>
+                    <div className="mt-6 flex justify-end">
+                      <button
+                        onClick={resetFilters}
+                        className="px-6 py-2 text-sm text-navy/70 hover:text-navy border border-taupe/30 rounded-lg transition-colors"
+                      >
+                        Reset All Filters
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
             )}
           </div>
-          
-          {/* Sort Button */}
+
+          {/* Sort Dropdown */}
           <div className="relative sort-dropdown z-50">
             <button 
               onClick={(e) => {
@@ -286,15 +274,15 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
                 setShowSortOptions(!showSortOptions);
                 setShowFilters(false);
               }}
-              className="flex items-center space-x-2 text-navy/70 hover:text-navy transition-colors cursor-pointer"
+              className="flex items-center space-x-2 text-navy/70 hover:text-navy transition-colors"
             >
-              <span className="uppercase tracking-widest text-xs">Sort</span>
+              <span className="text-sm font-medium">Sort By</span>
               <ChevronDownIcon className={`h-4 w-4 transition-transform ${showSortOptions ? 'rotate-180' : ''}`} />
             </button>
             
-            {/* Sort Dropdown */}
+            {/* Sort Options Dropdown */}
             {showSortOptions && (
-              <div className="absolute right-0 mt-2 w-48 bg-cream shadow-lg rounded-md border border-taupe/10 z-50">
+              <div className="absolute left-0 mt-2 w-48 bg-cream shadow-lg rounded-md border border-taupe/10">
                 <div className="py-2">
                   {[
                     { value: 'featured', label: 'Featured' },
@@ -309,7 +297,11 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
                         setSortOption(option.value);
                         setShowSortOptions(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-sm ${sortOption === option.value ? 'text-navy bg-navy/5 font-medium' : 'text-navy/70 hover:bg-navy/5'}`}
+                      className={`w-full text-left px-4 py-2 text-sm ${
+                        sortOption === option.value 
+                          ? 'text-navy bg-navy/5 font-medium' 
+                          : 'text-navy/70 hover:bg-navy/5'
+                      }`}
                     >
                       {option.label}
                     </button>
@@ -319,61 +311,47 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
             )}
           </div>
         </div>
+        <div className="ml-auto text-navy/80">
+          <span className="uppercase tracking-widest text-xs">
+            {sortedProducts.length} {sortedProducts.length === 1 ? 'item' : 'items'} found
+          </span>
+        </div>
       </div>
-      
+
       {/* Active Filters Display */}
       {hasActiveFilters && (
         <div className="flex flex-wrap gap-2 mb-6">
+          {selectedPriceRange !== 'all' && (
+            <button
+              onClick={() => setSelectedPriceRange('all')}
+              className="flex items-center bg-navy/5 text-navy text-xs px-3 py-1 rounded-full"
+            >
+              <span>Price: {filterOptions.priceRanges.find(r => r.id === selectedPriceRange)?.name}</span>
+              <XMarkIcon className="h-3 w-3 ml-1" />
+            </button>
+          )}
+          
           {selectedOccasions.map(occasion => (
             <button
               key={occasion}
               onClick={() => toggleOccasion(occasion)}
               className="flex items-center bg-navy/5 text-navy text-xs px-3 py-1 rounded-full"
             >
-              <span className="capitalize">{occasion}</span>
+              <span>Occasion: {occasion}</span>
               <XMarkIcon className="h-3 w-3 ml-1" />
             </button>
           ))}
-          
-          {selectedColors.map(color => (
-            <button
-              key={color}
-              onClick={() => toggleColor(color)}
-              className="flex items-center bg-navy/5 text-navy text-xs px-3 py-1 rounded-full"
-            >
-              <span className="inline-block w-2 h-2 rounded-full mr-1" style={{ backgroundColor: color }}></span>
-              <span>Color</span>
-              <XMarkIcon className="h-3 w-3 ml-1" />
-            </button>
-          ))}
-          
+
           {selectedSizes.map(size => (
             <button
               key={size}
               onClick={() => toggleSize(size)}
               className="flex items-center bg-navy/5 text-navy text-xs px-3 py-1 rounded-full"
             >
-              <span>Size {size}</span>
+              <span>Size: {size}</span>
               <XMarkIcon className="h-3 w-3 ml-1" />
             </button>
           ))}
-          
-          {(priceRange[0] > minPrice || priceRange[1] < maxPrice) && (
-            <button
-              onClick={() => setPriceRange([minPrice, maxPrice])}
-              className="flex items-center bg-navy/5 text-navy text-xs px-3 py-1 rounded-full"
-            >
-              <span>${priceRange[0]} - ${priceRange[1]}</span>
-              <XMarkIcon className="h-3 w-3 ml-1" />
-            </button>
-          )}
-          
-          <button
-            onClick={resetFilters}
-            className="flex items-center text-navy/70 hover:text-navy text-xs underline"
-          >
-            Clear all
-          </button>
         </div>
       )}
       

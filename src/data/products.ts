@@ -4,17 +4,20 @@ export const productsData: ProductType[] = [
   // Caftans
   {
     id: "caftan-01",
-    name: "Caftan Marocain Royal Bleu",
-    description: "Caftan marocain traditionnel en soie avec broderies dorées. Élégant et raffiné, parfait pour les mariages et cérémonies.",
+    name: "Caftan Marocain Royal Rouge",
+    description: "Laissez-vous envoûter par le charme majestueux du Caftan Marocain Royal Rouge, une pièce emblématique qui incarne la noblesse et le raffinement de l'artisanat marocain. Confectionné avec un tissu luxueux aux reflets éclatants, ce caftan se distingue par sa teinte rouge profonde, symbole de passion, de force et de royauté.",
     price: 299.99,
     oldPrice: 359.99,
     category: "caftan",
     images: [
       "/images/caftans/caftan1.jpg",
-      "/images/caftans/caftan1-detail.jpg"
+      "/images/caftans/caftan1_detail1.jpg",
+      "/images/caftans/caftan1_detail2.jpg",
+      "/images/caftans/caftan1_detail3.jpg",
+      "/images/caftans/caftan1_detail4.jpg"
     ],
     colors: ["#1e3a8a", "#c8a951", "#64748b"],
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["s", "m", "l", "xl"],
     material: "Soie et broderies",
     occasions: ["mariage", "cérémonie", "fête"],
     isAvailable: true,
@@ -32,16 +35,19 @@ export const productsData: ProductType[] = [
   {
     id: "caftan-02",
     name: "Caftan Émeraude de Luxe",
-    description: "Somptueux caftan vert émeraude avec détails argentés et perles. Une création haute couture pour briller lors des occasions spéciales.",
+    description: "Succombez à l'élégance intemporelle du Caftan Émeraude de Luxe, une création somptueuse qui évoque la noblesse orientale et l'élégance contemporaine. Sa teinte émeraude, à la fois profonde et envoûtante, incarne le luxe discret et la féminité affirmée.",
     price: 389.99,
-    oldPrice: null,
+    oldPrice: undefined,
     category: "caftan",
     images: [
       "/images/caftans/caftan2.jpg",
-      "/images/caftans/caftan2-detail.jpg"
+      "/images/caftans/caftan2_detail1.jpg",
+      "/images/caftans/caftan2_detail2.jpg",
+      "/images/caftans/caftan2_detail3.jpg",
+      "/images/caftans/caftan2_detail4.jpg"
     ],
     colors: ["#047857", "#e5e7eb", "#0f172a"],
-    sizes: ["S", "M", "L", "XL", "XXL"],
+    sizes: ["s", "m", "l", "xl"],
     material: "Velours et broderies perlées",
     occasions: ["mariage", "fête", "cérémonie"],
     isAvailable: true,
@@ -58,17 +64,18 @@ export const productsData: ProductType[] = [
   },
   {
     id: "caftan-03",
-    name: "Caftan Terre Cuite",
-    description: "Un caftan aux teintes chaudes de terre cuite, orné de motifs berbères authentiques et de broderies traditionnelles.",
+    name: "Caftan Noir Deux Pièces avec Ceinture",
+    description: "Découvrez le charme sophistiqué du Caftan Noir Deux Pièces avec Ceinture, une tenue raffinée qui allie modernité et tradition. Composé d’une sous-robe fluide et d’un manteau brodé aux détails subtils, ce caftan incarne l’élégance sobre et la prestance naturelle.",
     price: 279.99,
     oldPrice: 329.99,
     category: "caftan",
     images: [
       "/images/caftans/caftan3.jpg",
-      "/images/caftans/caftan3-detail.jpg"
+      "/images/caftans/caftan3_detail1.jpg",
+      "/images/caftans/caftan3_detail2.jpg",
     ],
     colors: ["#c2410c", "#92400e", "#78350f"],
-    sizes: ["XS", "S", "M", "L"],
+    sizes: ["xs", "s", "m", "l"],
     material: "Coton et soie mélangés",
     occasions: ["mariage", "fête", "quotidien"],
     isAvailable: true,
@@ -85,17 +92,18 @@ export const productsData: ProductType[] = [
   },
   {
     id: "caftan-04",
-    name: "Caftan Rose Poudré",
-    description: "Caftan élégant en rose poudré avec des détails floraux délicats, idéal pour les cérémonies de printemps et d'été.",
+    name: "Caftan Deux Pièces à Manches Imprimées",
+    description: "Affirmez votre style avec le Caftan Deux Pièces à Manches Imprimées, une pièce moderne et audacieuse qui revisite le caftan traditionnel avec une touche artistique. Ce modèle se compose d’une robe intérieure fluide et d’un manteau ouvert sublimé par des manches aux imprimés uniques, apportant une touche contemporaine et expressive.",
     price: 249.99,
-    oldPrice: null,
+    oldPrice: undefined,
     category: "caftan",
     images: [
       "/images/caftans/caftan4.jpg",
-      "/images/caftans/caftan4-detail.jpg"
+      "/images/caftans/caftan4_detail1.jpg",
+      "/images/caftans/caftan4_detail2.jpg"
     ],
     colors: ["#fda4af", "#f8fafc", "#ffe4e6"],
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["s", "m", "l", "xl"],
     material: "Mousseline de soie",
     occasions: ["mariage", "cérémonie", "fête"],
     isAvailable: true,
@@ -112,17 +120,20 @@ export const productsData: ProductType[] = [
   },
   {
     id: "caftan-05",
-    name: "Caftan Royal Bordeaux",
-    description: "Un caftan somptueux d'un rouge bordeaux profond avec des détails dorés élaborés, parfait pour les grandes occasions.",
+    name: "Caftan deux pièces avec gandoura",
+    description: "Plongez dans l’univers du raffinement marocain avec ce somptueux Caftan Deux Pièces avec Gandoura, une alliance parfaite entre confort et prestige. Ce modèle se compose d’une gandoura fluide, légère et agréable à porter, surmontée d’un caftan ouvert richement brodé, pour une silhouette élégante et gracieuse.",
     price: 399.99,
     oldPrice: 459.99,
     category: "caftan",
     images: [
       "/images/caftans/caftan5.jpg",
-      "/images/caftans/caftan5-detail.jpg"
+      "/images/caftans/caftan5_detail1.jpg",
+      "/images/caftans/caftan5_detail2.jpg",
+      "/images/caftans/caftan5_detail3.jpg",
+      "/images/caftans/caftan5_detail4.jpg"
     ],
     colors: ["#7f1d1d", "#b91c1c", "#c8a951"],
-    sizes: ["M", "L", "XL", "XXL"],
+    sizes: ["m", "l", "xl"],
     material: "Velours et broderies dorées",
     occasions: ["mariage", "cérémonie"],
     isAvailable: true,
@@ -141,17 +152,20 @@ export const productsData: ProductType[] = [
   // Jellabas
   {
     id: "jellaba-01",
-    name: "Jellaba Contemporaine Grise",
-    description: "Jellaba moderne en gris clair avec des touches contemporaines, idéale pour un usage quotidien élégant.",
+    name: "Jellaba Contemporaine Rouge",
+    description: "Laissez-vous séduire par la simplicité raffinée de la Jellaba Rouge, une pièce incontournable du dressing marocain. Avec sa teinte rouge vibrante, symbole de force et de féminité, cette jellaba attire le regard tout en restant élégante et sobre.",
     price: 159.99,
     oldPrice: 189.99,
     category: "jellaba",
     images: [
       "/images/jellabas/jellaba1.jpg",
-      "/images/jellabas/jellaba1-detail.jpg"
+      "/images/jellabas/jellaba1_detail1.jpg",
+      "/images/jellabas/jellaba1_detail2.jpg",
+      "/images/jellabas/jellaba1_detail3.jpg",
+      "/images/jellabas/jellaba1_detail4.jpg"
     ],
     colors: ["#64748b", "#e2e8f0", "#334155"],
-    sizes: ["S", "M", "L", "XL", "XXL"],
+    sizes: ["s", "m", "l", "xl"],
     material: "Coton premium",
     occasions: ["quotidien", "ramadan", "fête"],
     isAvailable: true,
@@ -168,17 +182,20 @@ export const productsData: ProductType[] = [
   },
   {
     id: "jellaba-02",
-    name: "Jellaba Safran Traditionnelle",
-    description: "Jellaba traditionnelle dans une riche couleur safran avec des broderies classiques, parfaite pour le Ramadan et les occasions spéciales.",
+    name: "Jellaba Grise Traditionnelle",
+    description: "Découvrez la Jellaba Grise, une pièce à l’allure épurée qui incarne la discrétion chic et le confort absolu. Sa couleur grise, douce et intemporelle, en fait un choix polyvalent adapté aussi bien aux journées décontractées qu’aux sorties élégantes.",
     price: 179.99,
-    oldPrice: null,
+    oldPrice: undefined,
     category: "jellaba",
     images: [
       "/images/jellabas/jellaba2.jpg",
-      "/images/jellabas/jellaba2-detail.jpg"
+      "/images/jellabas/jellaba2_detail1.jpg",
+      "/images/jellabas/jellaba2_detail2.jpg",
+      "/images/jellabas/jellaba2_detail3.jpg",
+      "/images/jellabas/jellaba2_detail4.jpg"
     ],
     colors: ["#f59e0b", "#d97706", "#b45309"],
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["s", "m", "l", "xl"],
     material: "Laine fine mélangée",
     occasions: ["ramadan", "fête", "quotidien"],
     isAvailable: true,
@@ -196,16 +213,19 @@ export const productsData: ProductType[] = [
   {
     id: "jellaba-03",
     name: "Jellaba Bleue Marine",
-    description: "Élégante jellaba bleu marine avec des détails blancs raffinés, polyvalente pour diverses occasions.",
+    description: "Adoptez un style à la fois sobre et sophistiqué avec la Jellaba Bleu Marine, une pièce qui reflète l’élégance discrète et le raffinement marocain. Sa teinte bleu marine, profonde et apaisante, évoque à la fois la noblesse, la sérénité, et le bon goût.",
     price: 149.99,
     oldPrice: 179.99,
     category: "jellaba",
     images: [
       "/images/jellabas/jellaba3.jpg",
-      "/images/jellabas/jellaba3-detail.jpg"
+      "/images/jellabas/jellaba3_detail1.jpg",
+      "/images/jellabas/jellaba3_detail2.jpg",
+      "/images/jellabas/jellaba3_detail3.jpg",
+      "/images/jellabas/jellaba3_detail4.jpg"
     ],
     colors: ["#1e3a8a", "#f8fafc", "#334155"],
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["s", "m", "l", "xl"],
     material: "Coton léger",
     occasions: ["quotidien", "ramadan", "fête"],
     isAvailable: true,
@@ -223,16 +243,20 @@ export const productsData: ProductType[] = [
   {
     id: "jellaba-04",
     name: "Jellaba Verte Olive",
-    description: "Jellaba confortable en vert olive avec des finitions élégantes, parfaite pour un style décontracté chic.",
+    description: "Laissez-vous séduire par la douceur et l’originalité de la Jellaba Verte Olive, une pièce qui mêle inspiration naturelle et raffinement traditionnel. Sa teinte vert olive, à la fois apaisante et tendance, apporte une touche de fraîcheur et de modernité à un vêtement emblématique du style marocain.",
     price: 169.99,
-    oldPrice: null,
+    oldPrice: undefined,
     category: "jellaba",
     images: [
       "/images/jellabas/jellaba4.jpg",
-      "/images/jellabas/jellaba4-detail.jpg"
+      "/images/jellabas/jellaba4_detail1.jpg",
+      "/images/jellabas/jellaba4_detail2.jpg",
+      "/images/jellabas/jellaba4_detail3.jpg",
+      "/images/jellabas/jellaba4_detail4.jpg",
+      "/images/jellabas/jellaba4_detail5.jpg"
     ],
     colors: ["#4d7c0f", "#65a30d", "#84cc16"],
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["s", "m", "l", "xl"],
     material: "Lin et coton",
     occasions: ["quotidien", "ramadan"],
     isAvailable: true,
@@ -249,17 +273,19 @@ export const productsData: ProductType[] = [
   },
   {
     id: "jellaba-05",
-    name: "Jellaba Blanche Brodée",
-    description: "Jellaba blanche immaculée avec de délicates broderies colorées, parfaite pour les cérémonies et le Ramadan.",
+    name: "Jellaba à manches imprimées",
+    description: "Osez la différence avec cette Jellaba à manches imprimées, qui allie la douceur de la coupe traditionnelle à une touche contemporaine et artistique. Les manches, ornées d’imprimés raffinés aux motifs uniques, apportent une note de fraîcheur et de modernité à cette pièce emblématique.",
     price: 189.99,
     oldPrice: 219.99,
     category: "jellaba",
     images: [
       "/images/jellabas/jellaba5.jpg",
-      "/images/jellabas/jellaba5-detail.jpg"
+      "/images/jellabas/jellaba5_detail1.jpg",
+      "/images/jellabas/jellaba5_detail2.jpg",
+      "/images/jellabas/jellaba5_detail3.jpg"
     ],
     colors: ["#f8fafc", "#cbd5e1", "#bae6fd"],
-    sizes: ["S", "M", "L", "XL", "XXL"],
+    sizes: ["s", "m", "l", "xl"],
     material: "Coton égyptien",
     occasions: ["ramadan", "fête", "cérémonie"],
     isAvailable: true,

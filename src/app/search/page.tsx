@@ -72,10 +72,10 @@ export default function SearchPage() {
       if (product.category.toLowerCase().includes(normalizedQuery)) return true;
       
       // Search in product material
-      if (product.material.toLowerCase().includes(normalizedQuery)) return true;
+      if (product.material?.toLowerCase().includes(normalizedQuery)) return true;
       
       // Search in product occasions
-      if (product.occasions.some(occasion => occasion.toLowerCase().includes(normalizedQuery))) return true;
+      if (product.occasions?.some(occasion => occasion.toLowerCase().includes(normalizedQuery))) return true;
       
       // Search in product details if available
       if (product.details) {
@@ -297,34 +297,28 @@ function SearchResultCard({ product, query }: { product: ProductType; query: str
   };
   
   return (
-    <Link href={`/products/${product.id}`} className="group">
-      <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-        {/* Product image */}
-        <div className="relative h-60 bg-sand/20 overflow-hidden">
-          {product.images[0] && (
-            <Image
-              src={product.images[0]}
-              alt={product.name}
-              fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+    <Link href={`/product/${product.id}`} className="group block">
+      <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+        <div className="relative aspect-square">
+          <Image
+            src={product.images[0]}
+            alt={product.name}
+            fill
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+          {product.isNew && (
+            <span className="absolute top-2 left-2 bg-navy/80 text-cream text-xs px-2 py-1 rounded">
+              New
+            </span>
           )}
-          
-          {/* Product badges */}
-          <div className="absolute top-3 left-3 flex flex-col gap-2">
-            {product.isNew && (
-              <span className="bg-emerald text-white text-xs px-2 py-1 rounded">New</span>
-            )}
-            {product.oldPrice && (
-              <span className="bg-navy text-cream text-xs px-2 py-1 rounded">
-                Sale
-              </span>
-            )}
-          </div>
+          {product.oldPrice && (
+            <span className="absolute top-2 right-2 bg-red-500/80 text-white text-xs px-2 py-1 rounded">
+              Sale
+            </span>
+          )}
         </div>
         
-        {/* Product info */}
         <div className="p-4">
           <h3 className="text-navy font-medium mb-1 group-hover:text-emerald transition-colors">
             {highlightMatch(product.name, query)}
@@ -339,22 +333,6 @@ function SearchResultCard({ product, query }: { product: ProductType; query: str
                 </>
               ) : (
                 <span className="text-navy font-medium">{product.price.toFixed(2)} €</span>
-              )}
-            </div>
-            
-            {/* Color options preview */}
-            <div className="flex -space-x-1">
-              {product.colors.slice(0, 3).map((color, index) => (
-                <span
-                  key={index}
-                  className="w-4 h-4 rounded-full border border-white"
-                  style={{ backgroundColor: color }}
-                ></span>
-              ))}
-              {product.colors.length > 3 && (
-                <span className="w-4 h-4 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[10px] text-navy/70">
-                  +{product.colors.length - 3}
-                </span>
               )}
             </div>
           </div>

@@ -115,9 +115,9 @@ export default function CartPage() {
                         <Link href={`/product/${item.productId}`} className="hover:text-gold transition-colors">
                           <h3 className="text-base font-medium text-gray-900">{item.name}</h3>
                         </Link>
-                        <p className="mt-1 text-sm text-gray-500">
-                          Color: {item.color.replace(/-/g, ' ')} | Size: {item.size.toUpperCase()}
-                        </p>
+                        <div className="text-sm text-gray-500">
+                          Size: {item.size.toUpperCase()}
+                        </div>
                         <p className="mt-1 text-sm font-medium text-gray-900">${item.price.toFixed(2)}</p>
                       </div>
 
