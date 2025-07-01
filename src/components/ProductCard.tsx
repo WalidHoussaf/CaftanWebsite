@@ -4,66 +4,11 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { HeartIcon, ShoppingCartIcon, PlusIcon, EyeIcon } from '@heroicons/react/24/outline';
-import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
+import { HeartIcon as HeartIconSolid, StarIcon } from '@heroicons/react/24/solid';
 import { ProductType } from '../types/product';
 import { useCartStore } from '@/store/cartStore';
 import { useWishlistStore } from '@/store/wishlistStore';
 import toast from 'react-hot-toast';
-
-// Color mapping for product colors
-const colorNameMap: { [key: string]: string } = {
-  '#1e40af': 'Royal Blue',
-  '#047857': 'Emerald Green',
-  '#b91c1c': 'Ruby Red',
-  '#d97706': 'Gold',
-  '#94a3b8': 'Silver',
-  '#171717': 'Black',
-  '#fef3c7': 'Ivory',
-  // Additional common colors
-  '#ffffff': 'White',
-  '#f8fafc': 'White',
-  '#f1f5f9': 'Light Gray',
-  '#cbd5e1': 'Gray',
-  '#64748b': 'Dark Gray',
-  '#334155': 'Slate',
-  '#020617': 'Black',
-  '#881337': 'Dark Red',
-  '#9f1239': 'Red',
-  '#dc2626': 'Bright Red',
-  '#ea580c': 'Orange',
-  '#ca8a04': 'Yellow',
-  '#65a30d': 'Lime',
-  '#16a34a': 'Green',
-  '#059669': 'Emerald',
-  '#0d9488': 'Teal',
-  '#0891b2': 'Cyan',
-  '#0284c7': 'Light Blue',
-  '#2563eb': 'Blue',
-  '#4f46e5': 'Indigo',
-  '#7c3aed': 'Violet',
-  '#9333ea': 'Purple',
-  '#c026d3': 'Fuchsia',
-  '#db2777': 'Pink',
-  '#be123c': 'Rose',
-  '#854d0e': 'Brown',
-  '#78350f': 'Dark Brown',
-  '#422006': 'Deep Brown'
-};
-
-const getColorName = (hexColor: string): string => {
-  // Convert the hex color to lowercase for consistent matching
-  const normalizedHex = hexColor.toLowerCase();
-  // Remove any spaces and ensure hex format
-  const formattedHex = normalizedHex.trim().startsWith('#') ? normalizedHex : `#${normalizedHex}`;
-  
-  return colorNameMap[formattedHex] || 
-         // Try to find a close match if exact match not found
-         Object.entries(colorNameMap).find(([key]) => 
-           key.toLowerCase() === formattedHex
-         )?.[1] || 
-         // If no match found, make the hex code more readable
-         formattedHex;
-};
 
 interface ProductCardProps {
   product: ProductType;
@@ -97,6 +42,13 @@ export default function ProductCard({ product }: ProductCardProps) {
         </span>
       )}
       
+      {/* Discount Percentage Badge (now top right) */}
+      {oldPrice && (
+        <span className="absolute top-3 right-3 z-10 bg-red-500/90 text-cream text-xs font-bold px-3 py-1 rounded shadow backdrop-blur-sm">
+          -{Math.round(((oldPrice - price) / oldPrice) * 100)}%
+        </span>
+      )}
+      
       {/* Decorative corner elements - visible on hover */}
       <div className="absolute top-3 right-3 w-6 h-6 border-t border-r border-cream/30 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100"></div>
       <div className="absolute bottom-3 left-3 w-6 h-6 border-b border-l border-cream/30 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100"></div>
@@ -115,10 +67,22 @@ export default function ProductCard({ product }: ProductCardProps) {
                     src={images[0]}
                     alt={name}
                     fill
-                    className="object-cover object-center w-full h-full transition-transform duration-700"
+                    className={`object-cover object-center w-full h-full transition-opacity duration-500 ${isHovered && images[1] ? 'opacity-0' : 'opacity-100'}`}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     quality={90}
+                    draggable={false}
                   />
+                  {images[1] && (
+                    <Image
+                      src={images[1]}
+                      alt={name + ' - alternate'}
+                      fill
+                      className={`object-cover object-center w-full h-full absolute top-0 left-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      quality={90}
+                      draggable={false}
+                    />
+                  )}
                 </div>
                 
                 {/* Subtle radial gradient overlay */}
@@ -149,7 +113,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Link href={`/product/${id}`} className="block">
             <h3 className="font-medium text-navy group-hover:text-navy/70 transition-colors duration-300">{name}</h3>
           </Link>
-          
           {/* Action Buttons Group */}
           <div className="flex space-x-3">
             {/* Favorite Button */}
@@ -207,14 +170,32 @@ export default function ProductCard({ product }: ProductCardProps) {
             </button>
           </div>
         </div>
-        
-        {/* Price */}
-        <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-navy font-medium">${price.toFixed(2)}</span>
-          {oldPrice && (
-            <span className="text-xs text-navy/50 line-through">
-              ${oldPrice.toFixed(2)}
-            </span>
+        {/* Price and Rating Row */}
+        <div className="flex items-center justify-between mt-2">
+          {/* Price */}
+          <div className="flex items-center">
+            {oldPrice ? (
+              <>
+                <span className="text-emerald font-medium">${price.toFixed(2)}</span>
+                <span className="text-navy/50 text-sm line-through ml-2">${oldPrice.toFixed(2)}</span>
+              </>
+            ) : (
+              <span className="text-navy font-medium">${price.toFixed(2)}</span>
+            )}
+          </div>
+          {/* Rating display */}
+          {typeof product.averageRating === 'number' && (
+            <div className="flex items-center ml-2">
+              <div className="flex mr-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <StarIcon
+                    key={star}
+                    className={`h-4 w-4 ${star <= Math.round(product.averageRating || 0) ? 'text-[#E6C200]' : 'text-navy/20'}`}
+                  />
+                ))}
+              </div>
+              <span className="text-xs text-navy/70">{product.averageRating.toFixed(1)}</span>
+            </div>
           )}
         </div>
         

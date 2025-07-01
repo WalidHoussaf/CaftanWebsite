@@ -31,7 +31,7 @@ export default function WishlistPage() {
   }
   
   return (
-    <main className="container mx-auto px-4 py-12 min-h-[60vh]">
+    <main className="container mx-auto px-4 pt-24 min-h-[60vh]">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>

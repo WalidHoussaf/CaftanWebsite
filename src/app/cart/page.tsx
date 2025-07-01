@@ -62,7 +62,7 @@ export default function CartPage() {
   }
 
   return (
-    <main className="container mx-auto px-4 py-12">
+    <main className="container mx-auto px-4 pt-24">
       <Toaster position="top-right" />
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-serif text-navy">Your Shopping Cart</h1>

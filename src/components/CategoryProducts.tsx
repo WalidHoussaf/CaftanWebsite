@@ -214,9 +214,9 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
                         {allOccasions.map(occasion => (
                           <button
                             key={occasion}
-                            onClick={() => toggleOccasion(occasion)}
+                            onClick={() => toggleOccasion(occasion as OccasionType)}
                             className={`px-4 py-2 rounded-lg transition-colors ${
-                              selectedOccasions.includes(occasion)
+                              selectedOccasions.includes(occasion as OccasionType)
                                 ? 'bg-navy/5 text-navy'
                                 : 'text-navy/70 hover:bg-navy/5'
                             }`}
@@ -334,7 +334,7 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
           {selectedOccasions.map(occasion => (
             <button
               key={occasion}
-              onClick={() => toggleOccasion(occasion)}
+              onClick={() => toggleOccasion(occasion as OccasionType)}
               className="flex items-center bg-navy/5 text-navy text-xs px-3 py-1 rounded-full"
             >
               <span>Occasion: {occasion}</span>

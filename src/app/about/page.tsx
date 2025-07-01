@@ -25,7 +25,7 @@ export default function AboutPage() {
   return (
     <div className="bg-cream min-h-screen">
       {/* Hero section */}
-      <div className="relative h-[500px] bg-[#7469B6] overflow-hidden">
+      <div className="relative h-[500px] bg-[#748873] overflow-hidden">
         {/* Decorative stripes */}
         <div className="absolute bottom-0 right-0 w-full h-full">
           {[1, 2, 3, 4].map((index) => (

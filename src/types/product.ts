@@ -32,7 +32,6 @@ export interface ProductType {
   oldPrice?: number;
   category: CategoryType;
   images: string[];
-  colors?: string[];
   sizes: SizeType[];
   stock: number;
   isAvailable: boolean;

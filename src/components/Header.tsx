@@ -48,7 +48,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
       scrolled 
         ? 'bg-cream/95 backdrop-blur-md shadow-sm py-2' 
         : 'bg-transparent py-4'
@@ -128,7 +128,7 @@ export default function Header() {
               </div>
             </Link>
             
-            {/* Login Button with simple elegant design */}
+            {/* Login Button */}
             <Link 
               href="/account/login" 
               className="relative hidden md:flex items-center px-4 py-1.5 group"

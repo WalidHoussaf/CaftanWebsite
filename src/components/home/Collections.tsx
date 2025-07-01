@@ -132,16 +132,6 @@ export default function Collections() {
                 </Link>
               </div>
             </div>
-            
-            {/* Quick view button */}
-            <div className="absolute top-6 right-6 z-30 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300">
-              <button className="p-2 bg-cream/10 hover:bg-cream/20 rounded-full backdrop-blur-sm transition-all duration-300 text-cream/90 hover:text-cream">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </button>
-            </div>
           </div>
           
           {/* Jellaba Collection Card */}
@@ -228,16 +218,6 @@ export default function Collections() {
                   </span>
                 </Link>
               </div>
-            </div>
-            
-            {/* Quick view button */}
-            <div className="absolute top-6 right-6 z-30 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300">
-              <button className="p-2 bg-cream/10 hover:bg-cream/20 rounded-full backdrop-blur-sm transition-all duration-300 text-cream/90 hover:text-cream">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>

@@ -126,7 +126,7 @@ export default function CollectionsPage() {
     if (activeCollection !== 'all') {
       const collection = collections.find(c => c.id === activeCollection);
       if (collection && collection.occasions) {
-        if (!product.occasions.some(occasion => collection.occasions.includes(occasion))) {
+        if (!product.occasions || !product.occasions.some(occasion => collection.occasions.includes(occasion))) {
           return false;
         }
       }
