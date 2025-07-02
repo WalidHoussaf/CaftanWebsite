@@ -137,16 +137,17 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
       {/* Filters & Products Section */}
       <section className="py-12 relative">
-        <div className="container-custom">
-          <div className="flex flex-wrap items-center justify-between mb-12">
-            <div className="inline-block mb-6 relative">
-              <span className="font-serif text-2xl font-light text-navy/70 relative z-10">Browse Collection</span>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
+        <div className="container-custom px-4 md:px-0 md:py-8">
+          <div className="max-w-7xl w-full pl-4 md:pl-10 pr-4 md:pr-10 mx-auto">
+            <div className="flex flex-wrap items-center justify-between mb-12">
+              <div className="inline-block mb-6 relative">
+                <span className="font-serif text-2xl font-light text-navy/70 relative z-10">Browse Collection</span>
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-taupe/30 to-transparent"></div>
+              </div>
             </div>
+            {/* Products Grid */}
+            <CategoryProducts category={categoryParam} />
           </div>
-
-          {/* Products Grid */}
-          <CategoryProducts category={categoryParam} />
         </div>
 
         {/* Decorative Elements */}

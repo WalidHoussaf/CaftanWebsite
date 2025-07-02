@@ -99,6 +99,9 @@ export default function CollectionsPage() {
   const [sortOption, setSortOption] = useState('featured');
   const [showSortOptions, setShowSortOptions] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => setMounted(true), []);
 
   // Add click outside handler for sort dropdown
   useEffect(() => {
@@ -313,6 +316,7 @@ export default function CollectionsPage() {
                         src={collection.image}
                         alt={collection.name}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         quality={95}
                         priority={index < 3}
@@ -578,21 +582,23 @@ export default function CollectionsPage() {
             <h2 className="text-2xl font-serif text-navy">
               {activeCollectionData.name}
               <span className="ml-3 text-lg text-navy/50">
-                {sortedProducts.length} items
+                {mounted ? `${sortedProducts.length} items` : null}
               </span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {sortedProducts.map((product) => (
-              <ProductCardComponent 
-                key={product.id} 
-                product={product}
-              />
-            ))}
-          </div>
+          {mounted ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {sortedProducts.map((product) => (
+                <ProductCardComponent 
+                  key={product.id} 
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : null}
 
-          {sortedProducts.length === 0 && (
+          {mounted && sortedProducts.length === 0 && (
             <div className="text-center py-16">
               <h3 className="text-xl font-serif text-navy mb-4">No Products Found</h3>
               <p className="text-navy/70 mb-8">Try adjusting your filters to find what you're looking for.</p>
@@ -659,4 +665,12 @@ function ProductCard({ product }: { product: ProductType }) {
       </div>
     </Link>
   );
+}
+
+// Add this component at the end of the file
+function ClientProductCount({ count }: { count: number }) {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+  return <>{count} items</>;
 }

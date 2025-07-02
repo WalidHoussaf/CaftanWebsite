@@ -5,7 +5,6 @@ import { productsData } from '../data/products';
 import ProductList from './ProductList';
 import { CategoryType, ProductType, OccasionType, SizeType } from '../types/product';
 import { AdjustmentsHorizontalIcon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
 
 interface CategoryProductsProps {
   category: CategoryType;

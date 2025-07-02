@@ -24,7 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cinzel.variable}>
-      <head />
+      <head>
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+      </head>
       <body className="font-sans bg-cream">
         <CartProvider>
           <div className="flex flex-col min-h-screen">

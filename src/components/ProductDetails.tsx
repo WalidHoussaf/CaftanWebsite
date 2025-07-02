@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { productsData } from '../data/products';
 import { ProductType } from '../types/product';
-import { HeartIcon, ShoppingCartIcon, ArrowsPointingOutIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import { ChevronRightIcon, StarIcon } from '@heroicons/react/24/solid';
 
@@ -28,9 +28,6 @@ const ProductDetails = ({ productId }: ProductDetailsProps) => {
     if (foundProduct) {
       setProduct(foundProduct);
       // Set defaults if available
-      if (foundProduct.colors && foundProduct.colors.length > 0) {
-        setSelectedColor(foundProduct.colors[0]);
-      }
       if (foundProduct.sizes && foundProduct.sizes.length > 0) {
         setSelectedSize(foundProduct.sizes[0]);
       }
@@ -212,28 +209,6 @@ const ProductDetails = ({ productId }: ProductDetailsProps) => {
                 </tbody>
               </table>
             </div>
-
-            {/* Colors */}
-            {product.colors && product.colors.length > 0 && (
-              <div className="mb-6">
-                <h3 className="text-sm uppercase tracking-wider text-navy/60 mb-3">Color</h3>
-                <div className="flex flex-wrap gap-2">
-                  {product.colors.map((color, index) => (
-                    <button
-                      key={index}
-                      className={`w-8 h-8 rounded-full border ${
-                        selectedColor === color 
-                          ? 'ring-2 ring-offset-2 ring-navy' 
-                          : 'ring-1 ring-taupe/30'
-                      }`}
-                      style={{ backgroundColor: color }}
-                      onClick={() => handleColorSelect(color)}
-                      aria-label={`Select color ${color}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Sizes */}
             {product.sizes && product.sizes.length > 0 && (

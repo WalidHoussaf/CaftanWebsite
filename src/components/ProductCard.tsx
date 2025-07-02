@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { HeartIcon, ShoppingCartIcon, PlusIcon, EyeIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, PlusIcon, EyeIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid, StarIcon } from '@heroicons/react/24/solid';
 import { ProductType } from '../types/product';
 import { useCartStore } from '@/store/cartStore';
@@ -12,11 +12,12 @@ import toast from 'react-hot-toast';
 
 interface ProductCardProps {
   product: ProductType;
+  hideRating?: boolean;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, hideRating }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const { id, name, price, oldPrice, category, images, isNew } = product;
+  const { id, name, price, oldPrice, images, isNew } = product;
   
   // Get wishlist functions
   const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlistStore();
@@ -111,7 +112,12 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-4 bg-cream/50 backdrop-blur-sm">
         <div className="flex items-start justify-between">
           <Link href={`/product/${id}`} className="block">
-            <h3 className="font-medium text-navy group-hover:text-navy/70 transition-colors duration-300">{name}</h3>
+            <h3
+              className="font-medium text-navy group-hover:text-navy/70 transition-colors duration-300 h-12 overflow-hidden"
+              style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}
+            >
+              {name}
+            </h3>
           </Link>
           {/* Action Buttons Group */}
           <div className="flex space-x-3">
@@ -184,7 +190,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             )}
           </div>
           {/* Rating display */}
-          {typeof product.averageRating === 'number' && (
+          {!hideRating && typeof product.averageRating === 'number' && (
             <div className="flex items-center ml-2">
               <div className="flex mr-1">
                 {[1, 2, 3, 4, 5].map((star) => (

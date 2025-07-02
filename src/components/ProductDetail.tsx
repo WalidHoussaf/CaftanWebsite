@@ -200,7 +200,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           
           {/* Thumbnail Gallery - Only show when not zoomed */}
           {product.images.length > 1 && !isZoomed && (
-            <div className="flex md:justify-start justify-center space-x-2 overflow-x-auto pb-2">
+            <div className="flex justify-center gap-2 mt-4">
               {product.images.map((image, index) => (
                 <motion.button
                   key={index}
@@ -246,15 +246,28 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-center justify-between"
+              className="flex items-center gap-4 mt-2 flex-wrap justify-between"
             >
-              <span className="text-3xl font-medium text-[#C78A3B]">${product.price.toFixed(2)}</span>
-              <div className="flex items-center gap-2">
-                <div className={`w-3 h-3 rounded-full ${product.isAvailable ? 'bg-green-500' : 'bg-red-500'} shadow-sm`} />
-                <span className={`text-sm font-medium ${product.isAvailable ? 'text-green-700' : 'text-red-700'}`}>
+              <div className="flex items-center gap-4 flex-wrap">
+                <span className="text-3xl font-bold text-[#E6C200]">${product.price.toFixed(2)}</span>
+                {product.oldPrice && (
+                  <span className="text-lg text-navy/40 font-bold line-through">${product.oldPrice.toFixed(2)}</span>
+                )}
+                {product.oldPrice && (
+                  <span className="ml-2 px-3 py-1 bg-red-500/90 text-cream text-xs font-bold rounded shadow">-
+                    {Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}%
+                  </span>
+                )}
+                {product.isNew && !product.oldPrice && (
+                  <span className="ml-2 px-3 py-1 bg-navy/90 text-cream text-xs font-bold rounded shadow">New</span>
+                )}
+              </div>
+              <span className="flex items-center gap-2 ml-auto">
+                <div className={`w-3 h-3 rounded-full ${product.isAvailable ? 'bg-green-700' : 'bg-red-700'} shadow-sm`} />
+                <span className={`text-sm font-bold ${product.isAvailable ? 'text-green-700' : 'text-red-700'}`}>
                   {product.isAvailable ? `In Stock (${product.stock})` : 'Out of Stock'}
                 </span>
-              </div>
+              </span>
             </motion.div>
           </div>
           
@@ -274,14 +287,14 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-medium text-navy uppercase">Size</h3>
+            <h3 className="text-lg font-bold text-navy">Wear Your Way</h3>
             <div className="flex flex-wrap gap-3">
               {availableSizes.map((size) => (
                 <motion.button
                   key={size.value}
                   onClick={() => handleSizeSelect(size.value)}
                   className={`
-                    px-4 py-2 text-sm font-medium rounded-full transition-all duration-200
+                    px-4 py-2 text-sm font-bold rounded-full transition-all duration-200
                     ${selectedSize === size.value
                       ? 'bg-navy text-white ring-2 ring-navy ring-offset-2'
                       : 'bg-white text-navy border border-navy/20 hover:border-navy'
@@ -303,12 +316,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="space-y-3"
           >
-            <h3 className="text-lg font-medium text-navy uppercase">Quantity</h3>
+            <h3 className="text-lg font-bold text-navy">Pieces Desired</h3>
             <div className="inline-flex items-center border border-navy/20 rounded-full bg-white">
               <motion.button
                 onClick={decrementQuantity}
                 disabled={quantity <= 1}
-                className="px-4 py-2 text-navy hover:bg-navy/5 disabled:opacity-50 disabled:hover:bg-transparent rounded-l-full transition-colors"
+                className="px-4 py-2 text-navy hover:bg-navy/5 disabled:opacity-50 disabled:hover:bg-transparent rounded-l-full transition-colors font-bold"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 aria-label="Decrease quantity"
@@ -338,7 +351,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           >
             <motion.button
               onClick={handleAddToCart}
-              className="flex-1 bg-navy hover:bg-navy/90 text-white py-3 px-6 rounded-full font-medium transition-colors duration-200"
+              className="flex-1 bg-navy hover:bg-navy/90 text-white py-3 px-6 rounded-full font-bold transition-colors duration-200"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -346,7 +359,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             </motion.button>
             <motion.button
               onClick={handleBuyNow}
-              className="flex-1 bg-[#D9D9D9] hover:bg-[#D9D9D9]/90 text-navy py-3 px-6 rounded-full font-medium transition-colors duration-200"
+              className="flex-1 bg-[#D9D9D9] hover:bg-[#D9D9D9]/90 text-navy py-3 px-6 rounded-full font-bold transition-colors duration-200"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
